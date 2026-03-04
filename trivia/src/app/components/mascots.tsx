@@ -18,10 +18,10 @@ export function Pickles({ speaking = false, size = "default", animated = false }
   );
 }
 
-export function Oliver({ speaking: _speaking = false }: { speaking?: boolean }) {
+export function Oliver({ speaking = false }: { speaking?: boolean }) {
   return (
     <div className="mascot">
-      <div className="mascot-avatar mascot-avatar--oliver">
+      <div className={`mascot-avatar mascot-avatar--oliver ${speaking ? "oliver-speaking" : ""}`}>
         <img src="/images/oliver.png" alt="Oliver the cat" className="mascot-img" style={{ objectPosition: "center 20%" }} />
       </div>
       <span className="mascot-name">Oliver</span>
@@ -29,10 +29,10 @@ export function Oliver({ speaking: _speaking = false }: { speaking?: boolean }) 
   );
 }
 
-export function Luca({ speaking: _speaking = false }: { speaking?: boolean }) {
+export function Luca({ speaking = false }: { speaking?: boolean }) {
   return (
     <div className="mascot">
-      <div className="mascot-avatar mascot-avatar--luca">
+      <div className={`mascot-avatar mascot-avatar--luca ${speaking ? "luca-speaking" : ""}`}>
         <img src="/images/luca.png" alt="Luca the cat" className="mascot-img" />
       </div>
       <span className="mascot-name">Luca</span>
@@ -53,10 +53,9 @@ const mascotComponents = {
 
 export function MascotSpeech({ mascot, text }: MascotSpeechProps) {
   const MascotComponent = mascotComponents[mascot];
-  const isSpeaking = mascot === "pickles";
   return (
     <div className="mascot-speech">
-      <MascotComponent speaking={isSpeaking} />
+      <MascotComponent speaking />
       <div className="speech-bubble">{text}</div>
     </div>
   );

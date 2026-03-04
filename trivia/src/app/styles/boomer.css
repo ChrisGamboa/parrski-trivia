@@ -578,6 +578,28 @@
   animation: picklesBounce 2s ease-in-out infinite;
 }
 
+@keyframes oliverShake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  20% { transform: translateX(-3px) rotate(-4deg); }
+  40% { transform: translateX(3px) rotate(4deg); }
+  60% { transform: translateX(-2px) rotate(-2deg); }
+  80% { transform: translateX(2px) rotate(2deg); }
+}
+
+.oliver-speaking {
+  animation: oliverShake 0.5s ease-in-out infinite;
+}
+
+@keyframes lucaSway {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-6deg) scale(1.03); }
+  75% { transform: rotate(6deg) scale(1.03); }
+}
+
+.luca-speaking {
+  animation: lucaSway 1s ease-in-out infinite;
+}
+
 /* ===== RESPONSIVE h1 ===== */
 
 @media (min-width: 640px) {
