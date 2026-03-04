@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import type {
   Question as QuestionType,
   QuestionResult,
@@ -16,6 +17,15 @@ interface RevealProps {
 
 export function Reveal({ question, result, players, myId }: RevealProps) {
   const correctIndex = result.correctIndex;
+  const myResult = result.players[myId];
+  const isCorrect = myResult && myResult.choiceIndex === correctIndex;
+
+  useEffect(() => {
+    if (!isCorrect) {
+      const audio = new Audio("/sounds/sad-trombone.mp3");
+      audio.play().catch(() => {});
+    }
+  }, []);
 
   return (
     <div className="animate-fade-in">
@@ -72,24 +82,17 @@ export function Reveal({ question, result, players, myId }: RevealProps) {
         </ul>
       </div>
 
-      {(() => {
-        const myResult = result.players[myId];
-        const isCorrect = myResult && myResult.choiceIndex === correctIndex;
-        if (isCorrect) {
-          return (
-            <MascotSpeech
-              mascot="luca"
-              text={question.commentary.lucaCorrect}
-            />
-          );
-        }
-        return (
-          <MascotSpeech
-            mascot="oliver"
-            text={question.commentary.oliverWrong}
-          />
-        );
-      })()}
+      {isCorrect ? (
+        <MascotSpeech
+          mascot="luca"
+          text={question.commentary.lucaCorrect}
+        />
+      ) : (
+        <MascotSpeech
+          mascot="oliver"
+          text={question.commentary.oliverWrong}
+        />
+      )}
     </div>
   );
 }
