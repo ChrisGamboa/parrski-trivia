@@ -22,7 +22,7 @@ export function Oliver({ speaking: _speaking = false }: { speaking?: boolean }) 
   return (
     <div className="mascot">
       <div className="mascot-avatar mascot-avatar--oliver">
-        <img src="/images/oliver.png" alt="Oliver the cat" className="mascot-img" />
+        <img src="/images/oliver.png" alt="Oliver the cat" className="mascot-img" style={{ objectPosition: "center 20%" }} />
       </div>
       <span className="mascot-name">Oliver</span>
     </div>
