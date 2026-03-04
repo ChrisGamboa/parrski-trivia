@@ -57,7 +57,7 @@ export const Question = memo(function Question({
 
   useEffect(() => {
     setShowBetting(true);
-    const timer = setTimeout(() => setShowBetting(false), 5000);
+    const timer = setTimeout(() => setShowBetting(false), 7500);
     return () => clearTimeout(timer);
   }, [questionNumber]);
 
