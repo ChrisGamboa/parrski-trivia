@@ -1,8 +1,10 @@
 "use client";
 
-import type { Question as QuestionType } from "@/app/data/types";
+import { useState, useEffect } from "react";
+import type { Question as QuestionType, Player } from "@/app/data/types";
 import { Timer } from "@/app/components/timer";
 import { MascotSpeech } from "@/app/components/mascots";
+import { BettingInterstitial } from "./betting-interstitial";
 
 interface QuestionProps {
   question: QuestionType;
@@ -12,6 +14,7 @@ interface QuestionProps {
   selectedChoice: number | null;
   onAnswer: (choiceIndex: number) => void;
   onTimeUp: () => void;
+  players: Player[];
 }
 
 export function Question({
@@ -22,7 +25,37 @@ export function Question({
   selectedChoice,
   onAnswer,
   onTimeUp,
+  players,
 }: QuestionProps) {
+  const [showBetting, setShowBetting] = useState(true);
+
+  useEffect(() => {
+    setShowBetting(true);
+    const timer = setTimeout(() => setShowBetting(false), 2500);
+    return () => clearTimeout(timer);
+  }, [questionNumber]);
+
+  if (showBetting) {
+    return (
+      <div className="animate-fade-in">
+        <div className="flex justify-between items-center mb-2">
+          <span className="category-badge">{question.category}</span>
+          <span className="text-electric-blue">
+            Question {questionNumber} / {totalQuestions}
+          </span>
+        </div>
+
+        <Timer questionStartTime={questionStartTime} onTimeUp={onTimeUp} />
+
+        <BettingInterstitial
+          bettingLines={question.commentary.bettingLines}
+          players={players}
+          questionNumber={questionNumber}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="animate-fade-in">
       <div className="flex justify-between items-center mb-2">

@@ -350,6 +350,7 @@ export function GameClient({ roomCode }: { roomCode: string }) {
           }
           onAnswer={handleAnswer}
           onTimeUp={handleTimeUp}
+          players={game.players}
         />
       )}
 
