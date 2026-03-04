@@ -31,7 +31,7 @@ export function Question({
 
   useEffect(() => {
     setShowBetting(true);
-    const timer = setTimeout(() => setShowBetting(false), 2500);
+    const timer = setTimeout(() => setShowBetting(false), 5000);
     return () => clearTimeout(timer);
   }, [questionNumber]);
 
