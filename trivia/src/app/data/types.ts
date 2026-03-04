@@ -48,7 +48,7 @@ export interface GameState {
   phase: GamePhase;
   players: Player[];
   hostId: string;
-  questionOrder: number[];
+  questions: Question[];
   currentQuestionIndex: number;
   questionStartTime: number;
   results: QuestionResult[];
@@ -58,7 +58,7 @@ export const INITIAL_GAME_STATE: GameState = {
   phase: "LOBBY",
   players: [],
   hostId: "",
-  questionOrder: [],
+  questions: [],
   currentQuestionIndex: 0,
   questionStartTime: 0,
   results: [],

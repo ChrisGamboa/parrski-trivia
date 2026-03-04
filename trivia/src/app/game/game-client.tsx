@@ -5,6 +5,7 @@ import { useSyncedState } from "rwsdk/use-synced-state/client";
 import type {
   GameState,
   PlayerAnswer,
+  Question,
   QuestionResult,
 } from "@/app/data/types";
 import {
@@ -18,11 +19,9 @@ import {
   getSavedPlayerName,
   savePlayerName,
   calculatePoints,
-  pickRandomIndices,
 } from "@/app/shared/utils";
-import { questions as allQuestions } from "@/app/data/questions";
 import { Lobby } from "./lobby";
-import { Question } from "./question";
+import { Question as QuestionView } from "./question";
 import { Reveal } from "./reveal";
 import { Results } from "./results";
 
@@ -32,7 +31,7 @@ const NO_ANSWER: PlayerAnswer = {
   answeredAt: 0,
 };
 
-export function GameClient({ roomCode }: { roomCode: string }) {
+export default function GameClient({ roomCode }: { roomCode: string }) {
   const myId = useRef(getPlayerId()).current;
 
   const [game, setGame] = useSyncedState<GameState>(
@@ -133,16 +132,18 @@ export function GameClient({ roomCode }: { roomCode: string }) {
     setJoined(true);
   }
 
-  function handleStart() {
+  async function fetchQuestions(): Promise<Question[]> {
+    const res = await fetch("/api/questions");
+    return res.json();
+  }
+
+  async function handleStart() {
     if (!isHost) return;
-    const questionOrder = pickRandomIndices(
-      allQuestions.length,
-      QUESTIONS_PER_GAME,
-    );
+    const questions = await fetchQuestions();
     setGame({
       ...game,
       phase: "QUESTION",
-      questionOrder,
+      questions,
       currentQuestionIndex: 0,
       questionStartTime: Date.now(),
       results: [],
@@ -166,8 +167,7 @@ export function GameClient({ roomCode }: { roomCode: string }) {
   function advanceToReveal() {
     if (!isHost) return;
     const qIdx = game.currentQuestionIndex;
-    const questionId = game.questionOrder[qIdx];
-    const question = allQuestions[questionId];
+    const question = game.questions[qIdx];
 
     const playerResults: QuestionResult["players"] = {};
     for (const player of game.players) {
@@ -230,16 +230,13 @@ export function GameClient({ roomCode }: { roomCode: string }) {
     advanceToReveal();
   }, [isHost, game, myAnswer, opponentAnswer]);
 
-  function handlePlayAgain() {
+  async function handlePlayAgain() {
     if (!isHost) return;
-    const questionOrder = pickRandomIndices(
-      allQuestions.length,
-      QUESTIONS_PER_GAME,
-    );
+    const questions = await fetchQuestions();
     setGame({
       ...game,
       phase: "QUESTION",
-      questionOrder,
+      questions,
       currentQuestionIndex: 0,
       questionStartTime: Date.now(),
       results: [],
@@ -305,8 +302,7 @@ export function GameClient({ roomCode }: { roomCode: string }) {
   }
 
   // Main game rendering by phase
-  const currentQuestionId = game.questionOrder[game.currentQuestionIndex];
-  const currentQuestion = allQuestions[currentQuestionId];
+  const currentQuestion = game.questions[game.currentQuestionIndex];
 
   return (
     <div className="boomer-container">
@@ -338,7 +334,7 @@ export function GameClient({ roomCode }: { roomCode: string }) {
       )}
 
       {game.phase === "QUESTION" && currentQuestion && (
-        <Question
+        <QuestionView
           question={currentQuestion}
           questionNumber={game.currentQuestionIndex + 1}
           totalQuestions={QUESTIONS_PER_GAME}
