@@ -7,6 +7,7 @@ import type {
   Player,
 } from "@/app/data/types";
 import { MascotSpeech } from "@/app/components/mascots";
+import { MascotOverlay } from "@/app/components/mascot-overlay";
 
 interface RevealProps {
   question: QuestionType;
@@ -29,6 +30,8 @@ export function Reveal({ question, result, players, myId }: RevealProps) {
 
   return (
     <div className="animate-fade-in">
+      <MascotOverlay type={isCorrect ? "correct" : "wrong"} />
+
       <div className="text-center mb-2">
         <span className="category-badge">{question.category}</span>
       </div>
