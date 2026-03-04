@@ -1,44 +1,41 @@
 "use client";
 
-import styles from "./mascots.module.css";
-
 export function Pickles({ speaking = false, size = "default", animated = false }: { speaking?: boolean; size?: "default" | "large"; animated?: boolean }) {
-  const sizeClass = size === "large" ? styles.mascotAvatarLarge : "";
-  const bounceClass = animated ? styles.picklesBounce : "";
+  const sizeClass = size === "large" ? "mascot-avatar--large" : "";
+  const speakClass = speaking ? "pickles-speaking" : "";
+  const bounceClass = animated ? "pickles-bounce" : "";
   return (
-    <div className={`${styles.mascot} ${bounceClass}`}>
-      <div
-        className={`${styles.mascotAvatar} ${styles["mascotAvatar--pickles"]} ${sizeClass} ${speaking ? styles.picklesSpeaking : ""}`}
-      >
+    <div className={`mascot ${bounceClass}`}>
+      <div className={`mascot-avatar mascot-avatar--pickles ${sizeClass} ${speakClass}`}>
         <img
           src="/images/pickles.png"
           alt="Pickles the Pomeranian"
-          className={styles.picklesImg}
+          className="pickles-img"
         />
       </div>
-      <span className={styles.mascotName}>Pickles</span>
+      <span className="mascot-name">Pickles</span>
     </div>
   );
 }
 
 export function Oliver({ speaking: _speaking = false }: { speaking?: boolean }) {
   return (
-    <div className={styles.mascot}>
-      <div className={`${styles.mascotAvatar} ${styles["mascotAvatar--oliver"]}`}>
+    <div className="mascot">
+      <div className="mascot-avatar mascot-avatar--oliver">
         <span>🐈‍⬛</span>
       </div>
-      <span className={styles.mascotName}>Oliver</span>
+      <span className="mascot-name">Oliver</span>
     </div>
   );
 }
 
 export function Luca({ speaking: _speaking = false }: { speaking?: boolean }) {
   return (
-    <div className={styles.mascot}>
-      <div className={`${styles.mascotAvatar} ${styles["mascotAvatar--luca"]}`}>
+    <div className="mascot">
+      <div className="mascot-avatar mascot-avatar--luca">
         <span>🐈</span>
       </div>
-      <span className={styles.mascotName}>Luca</span>
+      <span className="mascot-name">Luca</span>
     </div>
   );
 }
@@ -58,9 +55,9 @@ export function MascotSpeech({ mascot, text }: MascotSpeechProps) {
   const MascotComponent = mascotComponents[mascot];
   const isSpeaking = mascot === "pickles";
   return (
-    <div className={styles.mascotSpeechContainer}>
+    <div className="mascot-speech">
       <MascotComponent speaking={isSpeaking} />
-      <div className={styles.speechBubble}>{text}</div>
+      <div className="speech-bubble">{text}</div>
     </div>
   );
 }
