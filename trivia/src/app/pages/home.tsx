@@ -107,7 +107,7 @@ export const Home = () => {
       </div>
 
       {error && (
-        <div className="boomer-card text-center border-red text-red">
+        <div className="boomer-card text-center text-red border-red">
           {error}
         </div>
       )}

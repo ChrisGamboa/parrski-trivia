@@ -71,6 +71,7 @@
   max-width: 600px;
 }
 
+/* Top arrow (mobile default) */
 .speechBubble::before {
   content: "";
   position: absolute;
@@ -91,29 +92,39 @@
   border-bottom: 8px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Mobile: stack vertically */
 .mascotSpeechContainer {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
   align-items: flex-start;
+  gap: 4px;
   animation: fadeIn 0.5s ease;
 }
 
-.mascotSpeechContainer .speechBubble::before {
-  top: 16px;
-  left: -12px;
-  border-left: none;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-right: 12px solid var(--color-electric-blue);
-}
+/* Desktop: side-by-side with left arrow */
+@media (min-width: 640px) {
+  .mascotSpeechContainer {
+    flex-direction: row;
+    gap: 12px;
+  }
 
-.mascotSpeechContainer .speechBubble::after {
-  top: 18px;
-  left: -8px;
-  border-left: none;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-right: 8px solid rgba(255, 255, 255, 0.1);
+  .mascotSpeechContainer .speechBubble::before {
+    top: 16px;
+    left: -12px;
+    border-left: none;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 12px solid var(--color-electric-blue);
+  }
+
+  .mascotSpeechContainer .speechBubble::after {
+    top: 18px;
+    left: -8px;
+    border-left: none;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 8px solid rgba(255, 255, 255, 0.1);
+  }
 }
 
 @keyframes fadeIn {
