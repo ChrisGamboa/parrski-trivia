@@ -6,8 +6,8 @@
 }
 
 .mascotAvatar {
-  width: 80px;
-  height: 80px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -18,21 +18,22 @@
 
 @media (min-width: 640px) {
   .mascotAvatar {
-    width: 96px;
-    height: 96px;
+    width: 112px;
+    height: 112px;
     font-size: 3rem;
   }
 }
 
 .mascotAvatarLarge {
-  width: 120px;
-  height: 120px;
+  width: 160px;
+  height: 160px;
+  border-width: 4px;
 }
 
 @media (min-width: 640px) {
   .mascotAvatarLarge {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
   }
 }
 
@@ -145,6 +146,15 @@
     border-bottom: 6px solid transparent;
     border-right: 8px solid rgba(255, 255, 255, 0.1);
   }
+}
+
+.picklesBounce {
+  animation: picklesBounce 2s ease-in-out infinite;
+}
+
+@keyframes picklesBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
 @keyframes fadeIn {

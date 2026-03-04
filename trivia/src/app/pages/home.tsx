@@ -56,15 +56,15 @@ export const Home = () => {
       </div>
 
       <div className="text-center mb-4">
-        <Pickles size="large" />
+        <Pickles size="large" animated />
       </div>
 
       <div className="rainbow-divider" />
 
-      <div className="boomer-card">
+      <div className="boomer-card text-center">
         <h3 className="mb-2">What's Your Name?</h3>
         <input
-          className="boomer-input"
+          className="boomer-input sm:w-auto"
           type="text"
           placeholder="Enter your name..."
           value={name}
@@ -76,7 +76,7 @@ export const Home = () => {
         />
       </div>
 
-      <div className="boomer-card">
+      <div className="boomer-card text-center">
         <h3 className="mb-2">Create a Room</h3>
         <p className="mb-2 text-lime">
           Start a new game and invite a friend!
@@ -86,9 +86,9 @@ export const Home = () => {
         </BoomerButton>
       </div>
 
-      <div className="boomer-card">
+      <div className="boomer-card text-center">
         <h3 className="mb-2">Join a Room</h3>
-        <div className="flex gap-4 items-center flex-wrap">
+        <div className="flex gap-4 items-center justify-center flex-wrap">
           <input
             className="boomer-input boomer-input--code"
             type="text"

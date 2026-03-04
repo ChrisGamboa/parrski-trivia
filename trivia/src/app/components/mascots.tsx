@@ -2,10 +2,11 @@
 
 import styles from "./mascots.module.css";
 
-export function Pickles({ speaking = false, size = "default" }: { speaking?: boolean; size?: "default" | "large" }) {
+export function Pickles({ speaking = false, size = "default", animated = false }: { speaking?: boolean; size?: "default" | "large"; animated?: boolean }) {
   const sizeClass = size === "large" ? styles.mascotAvatarLarge : "";
+  const bounceClass = animated ? styles.picklesBounce : "";
   return (
-    <div className={styles.mascot}>
+    <div className={`${styles.mascot} ${bounceClass}`}>
       <div
         className={`${styles.mascotAvatar} ${styles["mascotAvatar--pickles"]} ${sizeClass} ${speaking ? styles.picklesSpeaking : ""}`}
       >
