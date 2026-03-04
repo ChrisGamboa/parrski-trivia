@@ -9,6 +9,7 @@ import {
 import { Document } from "@/app/document";
 import { setCommonHeaders } from "@/app/headers";
 import { Home } from "@/app/pages/home";
+import { Room } from "@/app/pages/room";
 
 export { SyncedStateServer };
 
@@ -18,8 +19,7 @@ export default defineApp([
   setCommonHeaders(),
   ...syncedStateRoutes(() => env.SYNCED_STATE_SERVER),
   ({ ctx }) => {
-    // setup ctx here
     ctx;
   },
-  render(Document, [route("/", Home)]),
+  render(Document, [route("/", Home), route("/room/:code", Room)]),
 ]);
