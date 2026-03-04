@@ -20,7 +20,7 @@ import {
   calculatePoints,
   pickRandomIndices,
 } from "@/app/shared/utils";
-import allQuestions from "@/app/data/questions.json";
+import { questions as allQuestions } from "@/app/data/questions";
 import { Lobby } from "./lobby";
 import { Question } from "./question";
 import { Reveal } from "./reveal";
