@@ -2,21 +2,24 @@
 
 import styles from "./mascots.module.css";
 
-// PHOTO SLOT: Replace emoji spans with <img> tags pointing to real pet photos
-// e.g. <img src="/images/pickles.jpg" alt="Pickles the Pomeranian" />
-
-export function Pickles() {
+export function Pickles({ speaking = false }: { speaking?: boolean }) {
   return (
     <div className={styles.mascot}>
-      <div className={`${styles.mascotAvatar} ${styles["mascotAvatar--pickles"]}`}>
-        <span>🐕</span>
+      <div
+        className={`${styles.mascotAvatar} ${styles["mascotAvatar--pickles"]} ${speaking ? styles.picklesSpeaking : ""}`}
+      >
+        <img
+          src="/images/pickles.png"
+          alt="Pickles the Pomeranian"
+          className={styles.picklesImg}
+        />
       </div>
       <span className={styles.mascotName}>Pickles</span>
     </div>
   );
 }
 
-export function Oliver() {
+export function Oliver({ speaking: _speaking = false }: { speaking?: boolean }) {
   return (
     <div className={styles.mascot}>
       <div className={`${styles.mascotAvatar} ${styles["mascotAvatar--oliver"]}`}>
@@ -27,7 +30,7 @@ export function Oliver() {
   );
 }
 
-export function Luca() {
+export function Luca({ speaking: _speaking = false }: { speaking?: boolean }) {
   return (
     <div className={styles.mascot}>
       <div className={`${styles.mascotAvatar} ${styles["mascotAvatar--luca"]}`}>
@@ -51,9 +54,10 @@ const mascotComponents = {
 
 export function MascotSpeech({ mascot, text }: MascotSpeechProps) {
   const MascotComponent = mascotComponents[mascot];
+  const isSpeaking = mascot === "pickles";
   return (
     <div className={styles.mascotSpeechContainer}>
-      <MascotComponent />
+      <MascotComponent speaking={isSpeaking} />
       <div className={styles.speechBubble}>{text}</div>
     </div>
   );

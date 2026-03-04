@@ -19,6 +19,27 @@
 .mascotAvatar--pickles {
   background: linear-gradient(135deg, #ffd700, #ffaa00);
   border-color: #ffd700;
+  overflow: hidden;
+}
+
+.picklesImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.picklesSpeaking {
+  animation: picklesWiggle 0.4s ease-in-out infinite;
+}
+
+@keyframes picklesWiggle {
+  0% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(12deg) scale(1.1); }
+  40% { transform: rotate(-10deg) scale(1.05); }
+  60% { transform: rotate(8deg) scale(1.12); }
+  80% { transform: rotate(-6deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
 }
 
 .mascotAvatar--oliver {
