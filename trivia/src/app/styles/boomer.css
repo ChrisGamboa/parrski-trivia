@@ -76,6 +76,29 @@
   100% { content: "..."; }
 }
 
+@keyframes timerShrink {
+  0% {
+    width: 100%;
+    background: linear-gradient(90deg, var(--color-lime), #7cfc00);
+  }
+  49.9% {
+    background: linear-gradient(90deg, var(--color-lime), #7cfc00);
+  }
+  50% {
+    background: linear-gradient(90deg, var(--color-yellow), #ffee58);
+  }
+  74.9% {
+    background: linear-gradient(90deg, var(--color-yellow), #ffee58);
+  }
+  75% {
+    background: linear-gradient(90deg, var(--color-hot-pink), #ff69b4);
+  }
+  100% {
+    width: 0%;
+    background: linear-gradient(90deg, var(--color-hot-pink), #ff69b4);
+  }
+}
+
 /* ===== BASE ===== */
 
 @layer base {
@@ -331,7 +354,11 @@
 
   .timer-bar {
     @apply h-full rounded-md;
-    transition: width 0.25s linear, background 0.5s ease;
+  }
+
+  .timer-bar--animated {
+    width: 100%;
+    animation: timerShrink linear forwards;
   }
 
   .timer-bar--green {

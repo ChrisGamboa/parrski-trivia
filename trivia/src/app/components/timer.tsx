@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { QUESTION_TIME_MS } from "@/app/data/types";
 
 interface TimerProps {
@@ -8,35 +8,38 @@ interface TimerProps {
   onTimeUp: () => void;
 }
 
-export function Timer({ questionStartTime, onTimeUp }: TimerProps) {
-  const [remaining, setRemaining] = useState(QUESTION_TIME_MS);
+export const Timer = memo(function Timer({
+  questionStartTime,
+  onTimeUp,
+}: TimerProps) {
+  const [seconds, setSeconds] = useState(Math.ceil(QUESTION_TIME_MS / 1000));
   const firedRef = useRef(false);
 
   useEffect(() => {
     firedRef.current = false;
-  }, [questionStartTime]);
+    const totalSeconds = Math.ceil(QUESTION_TIME_MS / 1000);
+    setSeconds(totalSeconds);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const elapsed = Date.now() - questionStartTime;
-      const left = Math.max(0, QUESTION_TIME_MS - elapsed);
-      setRemaining(left);
-
-      if (left <= 0 && !firedRef.current) {
+    // Single timeout for onTimeUp
+    const timeout = setTimeout(() => {
+      if (!firedRef.current) {
         firedRef.current = true;
         onTimeUp();
       }
-    }, 250);
+    }, QUESTION_TIME_MS);
 
-    return () => clearInterval(interval);
+    // 1s interval for countdown text
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - questionStartTime;
+      const left = Math.max(0, QUESTION_TIME_MS - elapsed);
+      setSeconds(Math.ceil(left / 1000));
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeout);
+      clearInterval(interval);
+    };
   }, [questionStartTime, onTimeUp]);
-
-  const seconds = Math.ceil(remaining / 1000);
-  const fraction = remaining / QUESTION_TIME_MS;
-
-  let colorClass = "timer-bar--green";
-  if (fraction < 0.25) colorClass = "timer-bar--pink";
-  else if (fraction < 0.5) colorClass = "timer-bar--yellow";
 
   let timerClass = "timer-text";
   if (seconds <= 3) timerClass += " animate-shake";
@@ -47,10 +50,11 @@ export function Timer({ questionStartTime, onTimeUp }: TimerProps) {
       <div className={timerClass}>{seconds}s</div>
       <div className="timer-bar-container">
         <div
-          className={`timer-bar ${colorClass}`}
-          style={{ width: `${fraction * 100}%` }}
+          className="timer-bar timer-bar--animated"
+          key={questionStartTime}
+          style={{ animationDuration: `${QUESTION_TIME_MS}ms` }}
         />
       </div>
     </div>
   );
-}
+});
