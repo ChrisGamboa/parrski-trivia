@@ -10,6 +10,10 @@ export interface QuestionCommentary {
   picklesIntro: string;
   lucaCorrect: string;
   oliverWrong: string;
+  bettingLines: {
+    oliver: string;
+    luca: string;
+  };
 }
 
 export interface Question {
