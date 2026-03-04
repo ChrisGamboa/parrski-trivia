@@ -6,14 +6,34 @@
 }
 
 .mascotAvatar {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   border: 3px solid;
+}
+
+@media (min-width: 640px) {
+  .mascotAvatar {
+    width: 96px;
+    height: 96px;
+    font-size: 3rem;
+  }
+}
+
+.mascotAvatarLarge {
+  width: 120px;
+  height: 120px;
+}
+
+@media (min-width: 640px) {
+  .mascotAvatarLarge {
+    width: 150px;
+    height: 150px;
+  }
 }
 
 .mascotAvatar--pickles {

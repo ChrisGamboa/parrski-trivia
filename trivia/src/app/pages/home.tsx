@@ -56,7 +56,7 @@ export const Home = () => {
       </div>
 
       <div className="text-center mb-4">
-        <Pickles />
+        <Pickles size="large" />
       </div>
 
       <div className="rainbow-divider" />
