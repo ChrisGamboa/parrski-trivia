@@ -252,28 +252,28 @@ export function GameClient({ roomCode }: { roomCode: string }) {
   if (!joined) {
     return (
       <div className="boomer-container">
-        <div className="text-center mb-2">
+        <div className="text-center mb-4">
           <h1>PARRSKI TRIVIA</h1>
-          <div className="room-code mt-1">{roomCode}</div>
+          <div className="room-code mt-2">{roomCode}</div>
         </div>
 
         <div className="rainbow-divider" />
 
         {game.players.length >= MAX_PLAYERS ? (
           <div className="boomer-card text-center">
-            <h2 style={{ color: "var(--red)" }}>Room Full!</h2>
-            <p className="mt-1">This room already has {MAX_PLAYERS} players.</p>
+            <h2 className="text-red">Room Full!</h2>
+            <p className="mt-2">This room already has {MAX_PLAYERS} players.</p>
             <a
               href="/"
-              style={{ color: "var(--electric-blue)", display: "inline-block", marginTop: "1rem" }}
+              className="text-electric-blue inline-block mt-4"
             >
               Back to Home
             </a>
           </div>
         ) : (
           <div className="boomer-card">
-            <h3 className="mb-1">Enter Your Name</h3>
-            <div className="flex gap-2 items-center" style={{ flexWrap: "wrap" }}>
+            <h3 className="mb-2">Enter Your Name</h3>
+            <div className="flex gap-4 items-center flex-wrap">
               <input
                 className="boomer-input"
                 type="text"
@@ -294,7 +294,7 @@ export function GameClient({ roomCode }: { roomCode: string }) {
               </button>
             </div>
             {error && (
-              <p className="mt-1" style={{ color: "var(--red)" }}>
+              <p className="mt-2 text-red">
                 {error}
               </p>
             )}
@@ -310,17 +310,14 @@ export function GameClient({ roomCode }: { roomCode: string }) {
 
   return (
     <div className="boomer-container">
-      <div className="flex justify-between items-center mb-1">
-        <h2 style={{ fontSize: "1.2rem" }}>PARRSKI TRIVIA</h2>
+      <div className="flex justify-between items-center mb-2">
+        <h2 className="text-xl">PARRSKI TRIVIA</h2>
         {game.phase !== "LOBBY" && (
-          <div className="flex gap-2">
+          <div className="flex gap-4">
             {game.players.map((p) => (
               <span
                 key={p.id}
-                style={{
-                  color: p.id === myId ? "var(--lime)" : "var(--electric-blue)",
-                  fontSize: "0.9rem",
-                }}
+                className={`text-sm ${p.id === myId ? "text-lime" : "text-electric-blue"}`}
               >
                 {p.name}: {p.score}
               </span>

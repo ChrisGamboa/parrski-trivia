@@ -39,8 +39,8 @@ export function Timer({ questionStartTime, onTimeUp }: TimerProps) {
   else if (fraction < 0.5) colorClass = "timer-bar--yellow";
 
   let timerClass = "timer-text";
-  if (seconds <= 3) timerClass += " shake";
-  else if (seconds <= 5) timerClass += " pulse";
+  if (seconds <= 3) timerClass += " animate-shake";
+  else if (seconds <= 5) timerClass += " animate-pulse-custom";
 
   return (
     <div>

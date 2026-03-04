@@ -48,21 +48,21 @@ export const Home = () => {
         </span>
       </div>
 
-      <div className="text-center mb-2">
+      <div className="text-center mb-4">
         <h1>PARRSKI TRIVIA</h1>
-        <p style={{ color: "var(--electric-blue)", fontSize: "1.1rem" }}>
+        <p className="text-electric-blue text-lg">
           A Boomer-Coded Trivia Faceoff
         </p>
       </div>
 
-      <div className="text-center mb-2">
+      <div className="text-center mb-4">
         <Pickles />
       </div>
 
       <div className="rainbow-divider" />
 
       <div className="boomer-card">
-        <h3 className="mb-1">What's Your Name?</h3>
+        <h3 className="mb-2">What's Your Name?</h3>
         <input
           className="boomer-input"
           type="text"
@@ -77,8 +77,8 @@ export const Home = () => {
       </div>
 
       <div className="boomer-card">
-        <h3 className="mb-1">Create a Room</h3>
-        <p className="mb-1" style={{ color: "var(--lime)" }}>
+        <h3 className="mb-2">Create a Room</h3>
+        <p className="mb-2 text-lime">
           Start a new game and invite a friend!
         </p>
         <BoomerButton color="pink" onClick={handleCreate}>
@@ -87,8 +87,8 @@ export const Home = () => {
       </div>
 
       <div className="boomer-card">
-        <h3 className="mb-1">Join a Room</h3>
-        <div className="flex gap-2 items-center" style={{ flexWrap: "wrap" }}>
+        <h3 className="mb-2">Join a Room</h3>
+        <div className="flex gap-4 items-center flex-wrap">
           <input
             className="boomer-input boomer-input--code"
             type="text"
@@ -107,10 +107,7 @@ export const Home = () => {
       </div>
 
       {error && (
-        <div
-          className="boomer-card text-center"
-          style={{ borderColor: "var(--red)", color: "var(--red)" }}
-        >
+        <div className="boomer-card text-center border-red text-red">
           {error}
         </div>
       )}

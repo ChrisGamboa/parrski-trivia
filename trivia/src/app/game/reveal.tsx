@@ -18,8 +18,8 @@ export function Reveal({ question, result, players, myId }: RevealProps) {
   const correctIndex = result.correctIndex;
 
   return (
-    <div className="fade-in">
-      <div className="text-center mb-1">
+    <div className="animate-fade-in">
+      <div className="text-center mb-2">
         <span className="category-badge">{question.category}</span>
       </div>
 
@@ -31,7 +31,6 @@ export function Reveal({ question, result, players, myId }: RevealProps) {
           if (i === correctIndex) {
             className += " choice-btn--correct";
           } else {
-            // Check if any player picked this wrong answer
             const someonePickedThis = Object.values(result.players).some(
               (p) => p.choiceIndex === i,
             );
@@ -52,8 +51,8 @@ export function Reveal({ question, result, players, myId }: RevealProps) {
 
       <div className="rainbow-divider" />
 
-      <div className="mt-1">
-        <h3 className="mb-1">Points This Round</h3>
+      <div className="mt-2">
+        <h3 className="mb-2">Points This Round</h3>
         <ul className="player-list">
           {players.map((player) => {
             const pr = result.players[player.id];

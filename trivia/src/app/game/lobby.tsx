@@ -15,11 +15,11 @@ export function Lobby({ roomCode, players, isHost, onStart }: LobbyProps) {
   const canStart = players.length === MAX_PLAYERS;
 
   return (
-    <div className="fade-in">
-      <div className="text-center mb-2">
-        <h2 className="mb-1">Waiting Room</h2>
+    <div className="animate-fade-in">
+      <div className="text-center mb-4">
+        <h2 className="mb-2">Waiting Room</h2>
         <div className="room-code">{roomCode}</div>
-        <p className="mt-1" style={{ color: "var(--electric-blue)" }}>
+        <p className="mt-2 text-electric-blue">
           Share this code with your opponent!
         </p>
       </div>
@@ -35,8 +35,8 @@ export function Lobby({ roomCode, players, isHost, onStart }: LobbyProps) {
         }
       />
 
-      <div className="mt-2">
-        <h3 className="mb-1">
+      <div className="mt-4">
+        <h3 className="mb-2">
           Players ({players.length}/{MAX_PLAYERS})
         </h3>
         <ul className="player-list">
@@ -54,16 +54,13 @@ export function Lobby({ roomCode, players, isHost, onStart }: LobbyProps) {
       </div>
 
       {!canStart && (
-        <p
-          className="text-center mt-2 waiting-dots"
-          style={{ color: "var(--yellow)" }}
-        >
+        <p className="text-center mt-4 text-yellow waiting-dots">
           Waiting for opponent
         </p>
       )}
 
       {isHost && canStart && (
-        <div className="text-center mt-2">
+        <div className="text-center mt-4">
           <BoomerButton color="lime" onClick={onStart}>
             Start Game!
           </BoomerButton>
@@ -71,7 +68,7 @@ export function Lobby({ roomCode, players, isHost, onStart }: LobbyProps) {
       )}
 
       {!isHost && canStart && (
-        <p className="text-center mt-2" style={{ color: "var(--yellow)" }}>
+        <p className="text-center mt-4 text-yellow">
           Waiting for host to start the game...
         </p>
       )}

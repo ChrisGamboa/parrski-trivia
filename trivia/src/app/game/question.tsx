@@ -24,10 +24,10 @@ export function Question({
   onTimeUp,
 }: QuestionProps) {
   return (
-    <div className="fade-in">
-      <div className="flex justify-between items-center mb-1">
+    <div className="animate-fade-in">
+      <div className="flex justify-between items-center mb-2">
         <span className="category-badge">{question.category}</span>
-        <span style={{ color: "var(--electric-blue)" }}>
+        <span className="text-electric-blue">
           Question {questionNumber} / {totalQuestions}
         </span>
       </div>
@@ -36,7 +36,7 @@ export function Question({
 
       <MascotSpeech mascot="pickles" text={question.commentary.picklesIntro} />
 
-      <p className="question-text mt-2">{question.question}</p>
+      <p className="question-text">{question.question}</p>
 
       <div className="choice-grid">
         {question.choices.map((choice, i) => {
@@ -56,7 +56,7 @@ export function Question({
       </div>
 
       {selectedChoice !== null && (
-        <p className="text-center mt-2 pulse" style={{ color: "var(--yellow)" }}>
+        <p className="text-center mt-4 animate-pulse-custom text-yellow">
           Locked in! Waiting for opponent...
         </p>
       )}
