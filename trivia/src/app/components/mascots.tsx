@@ -10,7 +10,7 @@ export function Pickles({ speaking = false, size = "default", animated = false }
         <img
           src="/images/pickles.png"
           alt="Pickles the Pomeranian"
-          className="pickles-img"
+          className="mascot-img"
         />
       </div>
       <span className="mascot-name">Pickles</span>
@@ -22,7 +22,7 @@ export function Oliver({ speaking: _speaking = false }: { speaking?: boolean }) 
   return (
     <div className="mascot">
       <div className="mascot-avatar mascot-avatar--oliver">
-        <span>🐈‍⬛</span>
+        <img src="/images/oliver.png" alt="Oliver the cat" className="mascot-img" />
       </div>
       <span className="mascot-name">Oliver</span>
     </div>
@@ -33,7 +33,7 @@ export function Luca({ speaking: _speaking = false }: { speaking?: boolean }) {
   return (
     <div className="mascot">
       <div className="mascot-avatar mascot-avatar--luca">
-        <span>🐈</span>
+        <img src="/images/luca.png" alt="Luca the cat" className="mascot-img" />
       </div>
       <span className="mascot-name">Luca</span>
     </div>
