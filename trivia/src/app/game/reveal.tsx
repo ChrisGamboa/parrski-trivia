@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import type {
   Question as QuestionType,
   QuestionResult,
@@ -16,7 +16,12 @@ interface RevealProps {
   myId: string;
 }
 
-export function Reveal({ question, result, players, myId }: RevealProps) {
+export const Reveal = memo(function Reveal({
+  question,
+  result,
+  players,
+  myId,
+}: RevealProps) {
   const correctIndex = result.correctIndex;
   const myResult = result.players[myId];
   const isCorrect = myResult && myResult.choiceIndex === correctIndex;
@@ -98,4 +103,4 @@ export function Reveal({ question, result, players, myId }: RevealProps) {
       )}
     </div>
   );
-}
+});

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { memo, useState, useEffect } from "react";
 import type { Question as QuestionType, Player } from "@/app/data/types";
 import { Timer } from "@/app/components/timer";
 import { MascotSpeech } from "@/app/components/mascots";
@@ -17,7 +17,33 @@ interface QuestionProps {
   players: Player[];
 }
 
-export function Question({
+const ChoiceButton = memo(function ChoiceButton({
+  choice,
+  index,
+  selected,
+  disabled,
+  onAnswer,
+}: {
+  choice: string;
+  index: number;
+  selected: boolean;
+  disabled: boolean;
+  onAnswer: (choiceIndex: number) => void;
+}) {
+  let className = `choice-btn choice-btn--${index}`;
+  if (selected) className += " choice-btn--selected";
+  return (
+    <button
+      className={className}
+      onClick={() => onAnswer(index)}
+      disabled={disabled}
+    >
+      {choice}
+    </button>
+  );
+});
+
+export const Question = memo(function Question({
   question,
   questionNumber,
   totalQuestions,
@@ -72,20 +98,16 @@ export function Question({
       <p className="question-text">{question.question}</p>
 
       <div className="choice-grid">
-        {question.choices.map((choice, i) => {
-          let className = `choice-btn choice-btn--${i}`;
-          if (selectedChoice === i) className += " choice-btn--selected";
-          return (
-            <button
-              key={i}
-              className={className}
-              onClick={() => onAnswer(i)}
-              disabled={selectedChoice !== null}
-            >
-              {choice}
-            </button>
-          );
-        })}
+        {question.choices.map((choice, i) => (
+          <ChoiceButton
+            key={i}
+            choice={choice}
+            index={i}
+            selected={selectedChoice === i}
+            disabled={selectedChoice !== null}
+            onAnswer={onAnswer}
+          />
+        ))}
       </div>
 
       {selectedChoice !== null && (
@@ -95,4 +117,4 @@ export function Question({
       )}
     </div>
   );
-}
+});

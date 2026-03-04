@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import type { Player } from "@/app/data/types";
 import { MascotSpeech } from "@/app/components/mascots";
 
@@ -9,7 +10,7 @@ interface BettingInterstitialProps {
   questionNumber: number;
 }
 
-export function BettingInterstitial({
+export const BettingInterstitial = memo(function BettingInterstitial({
   bettingLines,
   players,
   questionNumber,
@@ -30,4 +31,4 @@ export function BettingInterstitial({
       <MascotSpeech mascot="luca" text={lucaText} />
     </div>
   );
-}
+});

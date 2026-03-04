@@ -1,12 +1,24 @@
 "use client";
 
-export function Pickles({ speaking = false, size = "default", animated = false }: { speaking?: boolean; size?: "default" | "large"; animated?: boolean }) {
+import { memo } from "react";
+
+export const Pickles = memo(function Pickles({
+  speaking = false,
+  size = "default",
+  animated = false,
+}: {
+  speaking?: boolean;
+  size?: "default" | "large";
+  animated?: boolean;
+}) {
   const sizeClass = size === "large" ? "mascot-avatar--large" : "";
   const speakClass = speaking ? "pickles-speaking" : "";
   const bounceClass = animated ? "pickles-bounce" : "";
   return (
     <div className={`mascot ${bounceClass}`}>
-      <div className={`mascot-avatar mascot-avatar--pickles ${sizeClass} ${speakClass}`}>
+      <div
+        className={`mascot-avatar mascot-avatar--pickles ${sizeClass} ${speakClass}`}
+      >
         <img
           src="/images/pickles.png"
           alt="Pickles the Pomeranian"
@@ -16,29 +28,50 @@ export function Pickles({ speaking = false, size = "default", animated = false }
       <span className="mascot-name">Pickles</span>
     </div>
   );
-}
+});
 
-export function Oliver({ speaking = false }: { speaking?: boolean }) {
+export const Oliver = memo(function Oliver({
+  speaking = false,
+}: {
+  speaking?: boolean;
+}) {
   return (
     <div className="mascot">
-      <div className={`mascot-avatar mascot-avatar--oliver ${speaking ? "oliver-speaking" : ""}`}>
-        <img src="/images/oliver.png" alt="Oliver the cat" className="mascot-img" style={{ objectPosition: "center 20%" }} />
+      <div
+        className={`mascot-avatar mascot-avatar--oliver ${speaking ? "oliver-speaking" : ""}`}
+      >
+        <img
+          src="/images/oliver.png"
+          alt="Oliver the cat"
+          className="mascot-img"
+          style={{ objectPosition: "center 20%" }}
+        />
       </div>
       <span className="mascot-name">Oliver</span>
     </div>
   );
-}
+});
 
-export function Luca({ speaking = false }: { speaking?: boolean }) {
+export const Luca = memo(function Luca({
+  speaking = false,
+}: {
+  speaking?: boolean;
+}) {
   return (
     <div className="mascot">
-      <div className={`mascot-avatar mascot-avatar--luca ${speaking ? "luca-speaking" : ""}`}>
-        <img src="/images/luca.png" alt="Luca the cat" className="mascot-img" />
+      <div
+        className={`mascot-avatar mascot-avatar--luca ${speaking ? "luca-speaking" : ""}`}
+      >
+        <img
+          src="/images/luca.png"
+          alt="Luca the cat"
+          className="mascot-img"
+        />
       </div>
       <span className="mascot-name">Luca</span>
     </div>
   );
-}
+});
 
 interface MascotSpeechProps {
   mascot: "pickles" | "oliver" | "luca";
@@ -51,7 +84,10 @@ const mascotComponents = {
   luca: Luca,
 };
 
-export function MascotSpeech({ mascot, text }: MascotSpeechProps) {
+export const MascotSpeech = memo(function MascotSpeech({
+  mascot,
+  text,
+}: MascotSpeechProps) {
   const MascotComponent = mascotComponents[mascot];
   return (
     <div className="mascot-speech">
@@ -59,4 +95,4 @@ export function MascotSpeech({ mascot, text }: MascotSpeechProps) {
       <div className="speech-bubble">{text}</div>
     </div>
   );
-}
+});
