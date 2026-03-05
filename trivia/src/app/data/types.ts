@@ -1,4 +1,5 @@
 export const QUESTION_TIME_MS = 20000;
+export const BETTING_DURATION_MS = 7500;
 export const REVEAL_TIME_MS = 5000;
 export const MAX_POINTS = 1000;
 export const QUESTIONS_PER_GAME = 10;

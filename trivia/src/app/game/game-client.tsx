@@ -10,6 +10,7 @@ import type {
 } from "@/app/data/types";
 import {
   INITIAL_GAME_STATE,
+  BETTING_DURATION_MS,
   MAX_PLAYERS,
   QUESTIONS_PER_GAME,
   REVEAL_TIME_MS,
@@ -145,7 +146,7 @@ export default function GameClient({ roomCode }: { roomCode: string }) {
       phase: "QUESTION",
       questions,
       currentQuestionIndex: 0,
-      questionStartTime: Date.now(),
+      questionStartTime: Date.now() + BETTING_DURATION_MS,
       results: [],
       players: game.players.map((p) => ({ ...p, score: 0 })),
     });
@@ -219,7 +220,7 @@ export default function GameClient({ roomCode }: { roomCode: string }) {
         ...game,
         phase: "QUESTION",
         currentQuestionIndex: nextQIdx,
-        questionStartTime: Date.now(),
+        questionStartTime: Date.now() + BETTING_DURATION_MS,
       });
       setMyAnswer(NO_ANSWER);
     }
@@ -238,7 +239,7 @@ export default function GameClient({ roomCode }: { roomCode: string }) {
       phase: "QUESTION",
       questions,
       currentQuestionIndex: 0,
-      questionStartTime: Date.now(),
+      questionStartTime: Date.now() + BETTING_DURATION_MS,
       results: [],
       players: game.players.map((p) => ({ ...p, score: 0 })),
     });

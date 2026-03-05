@@ -2,6 +2,7 @@
 
 import { memo, useState, useEffect } from "react";
 import type { Question as QuestionType, Player } from "@/app/data/types";
+import { BETTING_DURATION_MS } from "@/app/data/types";
 import { Timer } from "@/app/components/timer";
 import { MascotSpeech } from "@/app/components/mascots";
 import { BettingInterstitial } from "./betting-interstitial";
@@ -57,7 +58,7 @@ export const Question = memo(function Question({
 
   useEffect(() => {
     setShowBetting(true);
-    const timer = setTimeout(() => setShowBetting(false), 7500);
+    const timer = setTimeout(() => setShowBetting(false), BETTING_DURATION_MS);
     return () => clearTimeout(timer);
   }, [questionNumber]);
 
@@ -70,8 +71,6 @@ export const Question = memo(function Question({
             Question {questionNumber} / {totalQuestions}
           </span>
         </div>
-
-        <Timer questionStartTime={questionStartTime} onTimeUp={onTimeUp} />
 
         <BettingInterstitial
           bettingLines={question.commentary.bettingLines}
