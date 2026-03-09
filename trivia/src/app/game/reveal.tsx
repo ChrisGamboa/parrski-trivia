@@ -43,6 +43,10 @@ export const Reveal = memo(function Reveal({
 
       <p className="question-text">{question.question}</p>
 
+      {question.image && (
+        <img src={question.image} alt="" className="question-img" />
+      )}
+
       <div className="choice-grid">
         {question.choices.map((choice, i) => {
           let className = `choice-btn choice-btn--${i}`;
@@ -60,7 +64,10 @@ export const Reveal = memo(function Reveal({
           }
           return (
             <button key={i} className={className} disabled>
-              {choice}
+              {choice.image && (
+                <img src={choice.image} alt={choice.text} className="choice-img" />
+              )}
+              {choice.text}
               {i === correctIndex && " ✓"}
             </button>
           );

@@ -17,11 +17,17 @@ export interface QuestionCommentary {
   };
 }
 
+export interface Choice {
+  text: string;
+  image?: string;
+}
+
 export interface Question {
   id: number;
   category: string;
   question: string;
-  choices: [string, string, string, string];
+  image?: string;
+  choices: [Choice, Choice, Choice, Choice];
   correctIndex: number;
   commentary: QuestionCommentary;
 }

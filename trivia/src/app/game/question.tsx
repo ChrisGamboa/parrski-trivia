@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useState, useEffect } from "react";
-import type { Question as QuestionType, Player } from "@/app/data/types";
+import type { Question as QuestionType, Choice, Player } from "@/app/data/types";
 import { BETTING_DURATION_MS } from "@/app/data/types";
 import { Timer } from "@/app/components/timer";
 import { MascotSpeech } from "@/app/components/mascots";
@@ -25,7 +25,7 @@ const ChoiceButton = memo(function ChoiceButton({
   disabled,
   onAnswer,
 }: {
-  choice: string;
+  choice: Choice;
   index: number;
   selected: boolean;
   disabled: boolean;
@@ -39,7 +39,10 @@ const ChoiceButton = memo(function ChoiceButton({
       onClick={() => onAnswer(index)}
       disabled={disabled}
     >
-      {choice}
+      {choice.image && (
+        <img src={choice.image} alt={choice.text} className="choice-img" />
+      )}
+      {choice.text}
     </button>
   );
 });
@@ -95,6 +98,10 @@ export const Question = memo(function Question({
       <MascotSpeech mascot="pickles" text={question.commentary.picklesIntro} />
 
       <p className="question-text">{question.question}</p>
+
+      {question.image && (
+        <img src={question.image} alt="" className="question-img" />
+      )}
 
       <div className="choice-grid">
         {question.choices.map((choice, i) => (

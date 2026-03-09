@@ -5,7 +5,7 @@ export const questions: Question[] = [
     id: 1,
     category: "Science",
     question: "What planet is known as the 'Red Planet'?",
-    choices: ["Venus", "Mars", "Jupiter", "Mercury"],
+    choices: [{ text: "Venus" }, { text: "Mars" }, { text: "Jupiter" }, { text: "Mercury" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Ooh, this one's out of this WORLD! Get it? *panting intensifies*",
@@ -21,7 +21,7 @@ export const questions: Question[] = [
     id: 2,
     category: "Geography",
     question: "What is the capital of Australia?",
-    choices: ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+    choices: [{ text: "Sydney" }, { text: "Melbourne" }, { text: "Canberra" }, { text: "Brisbane" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Down under we go! This one trips up EVERYONE!",
@@ -37,7 +37,7 @@ export const questions: Question[] = [
     id: 3,
     category: "History",
     question: "In what year did the Titanic sink?",
-    choices: ["1905", "1912", "1918", "1923"],
+    choices: [{ text: "1905" }, { text: "1912" }, { text: "1918" }, { text: "1923" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Iceberg right ahead! *spins in circle three times*",
@@ -53,7 +53,7 @@ export const questions: Question[] = [
     id: 4,
     category: "Pop Culture",
     question: "What is the name of the fictional country in 'Black Panther'?",
-    choices: ["Zamunda", "Wakanda", "Genovia", "Latveria"],
+    choices: [{ text: "Zamunda" }, { text: "Wakanda" }, { text: "Genovia" }, { text: "Latveria" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "WAKANDA FOREVER! I mean... no spoilers! *tail wagging*",
@@ -69,7 +69,7 @@ export const questions: Question[] = [
     id: 5,
     category: "Food",
     question: "What fruit is used to make traditional guacamole?",
-    choices: ["Tomato", "Mango", "Avocado", "Lime"],
+    choices: [{ text: "Tomato" }, { text: "Mango" }, { text: "Avocado" }, { text: "Lime" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "This question is RIPE for the picking! *drools on keyboard*",
@@ -85,7 +85,7 @@ export const questions: Question[] = [
     id: 6,
     category: "Animals",
     question: "What is a group of flamingos called?",
-    choices: ["A flock", "A flamboyance", "A colony", "A parade"],
+    choices: [{ text: "A flock" }, { text: "A flamboyance" }, { text: "A colony" }, { text: "A parade" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Pink birds standing on one leg! How do they DO that?! *falls over*",
@@ -101,7 +101,7 @@ export const questions: Question[] = [
     id: 7,
     category: "Tech",
     question: "What does 'HTTP' stand for?",
-    choices: ["HyperText Transfer Protocol", "High Tech Transfer Program", "HyperText Transmission Process", "Home Tool Transfer Protocol"],
+    choices: [{ text: "HyperText Transfer Protocol" }, { text: "High Tech Transfer Program" }, { text: "HyperText Transmission Process" }, { text: "Home Tool Transfer Protocol" }],
     correctIndex: 0,
     commentary: {
       picklesIntro: "Time for some TECH TALK! *chews ethernet cable*",
@@ -117,7 +117,7 @@ export const questions: Question[] = [
     id: 8,
     category: "Music",
     question: "Which band released the album 'Abbey Road'?",
-    choices: ["The Rolling Stones", "The Beatles", "Led Zeppelin", "The Who"],
+    choices: [{ text: "The Rolling Stones" }, { text: "The Beatles" }, { text: "Led Zeppelin" }, { text: "The Who" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Let it BARK! Let it BARK! *howls melodically*",
@@ -133,7 +133,7 @@ export const questions: Question[] = [
     id: 9,
     category: "Literature",
     question: "Who wrote '1984'?",
-    choices: ["Aldous Huxley", "Ray Bradbury", "George Orwell", "H.G. Wells"],
+    choices: [{ text: "Aldous Huxley" }, { text: "Ray Bradbury" }, { text: "George Orwell" }, { text: "H.G. Wells" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Big Brother is watching! And so am I! Through the window! At squirrels!",
@@ -149,7 +149,7 @@ export const questions: Question[] = [
     id: 10,
     category: "Math",
     question: "What is the value of Pi rounded to two decimal places?",
-    choices: ["3.12", "3.14", "3.16", "3.41"],
+    choices: [{ text: "3.12" }, { text: "3.14" }, { text: "3.16" }, { text: "3.41" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Mmmmm PIE! Wait, different kind of pi? *confused head tilt*",
@@ -165,7 +165,7 @@ export const questions: Question[] = [
     id: 11,
     category: "Movies",
     question: "What is the highest-grossing film of all time (not adjusted for inflation)?",
-    choices: ["Avengers: Endgame", "Avatar", "Titanic", "Star Wars: The Force Awakens"],
+    choices: [{ text: "Avengers: Endgame" }, { text: "Avatar" }, { text: "Titanic" }, { text: "Star Wars: The Force Awakens" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "LIGHTS! CAMERA! BELLY RUBS! Wait that's not how it goes...",
@@ -181,7 +181,7 @@ export const questions: Question[] = [
     id: 12,
     category: "Sports",
     question: "How many players are on a standard soccer/football team on the field?",
-    choices: ["9", "10", "11", "12"],
+    choices: [{ text: "9" }, { text: "10" }, { text: "11" }, { text: "12" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "GOOOOOAL! *zoomies around the living room*",
@@ -197,7 +197,7 @@ export const questions: Question[] = [
     id: 13,
     category: "Internet",
     question: "What year was the first tweet ever posted on Twitter/X?",
-    choices: ["2004", "2005", "2006", "2007"],
+    choices: [{ text: "2004" }, { text: "2005" }, { text: "2006" }, { text: "2007" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "TWEET TWEET! That's bird talk! I chase birds! *barks at screen*",
@@ -213,7 +213,7 @@ export const questions: Question[] = [
     id: 14,
     category: "Science",
     question: "What gas do plants primarily absorb from the atmosphere?",
-    choices: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+    choices: [{ text: "Oxygen" }, { text: "Nitrogen" }, { text: "Carbon Dioxide" }, { text: "Hydrogen" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "PLANTS! I love plants! Especially digging them up! *guilty face*",
@@ -229,7 +229,7 @@ export const questions: Question[] = [
     id: 15,
     category: "Geography",
     question: "Which country has the most time zones?",
-    choices: ["Russia", "USA", "China", "France"],
+    choices: [{ text: "Russia" }, { text: "USA" }, { text: "China" }, { text: "France" }],
     correctIndex: 3,
     commentary: {
       picklesIntro: "Time zones make my walk schedule SO confusing!",
@@ -245,7 +245,7 @@ export const questions: Question[] = [
     id: 16,
     category: "History",
     question: "What ancient wonder was located in Alexandria, Egypt?",
-    choices: ["Colossus of Rhodes", "Hanging Gardens", "The Great Lighthouse", "Temple of Artemis"],
+    choices: [{ text: "Colossus of Rhodes" }, { text: "Hanging Gardens" }, { text: "The Great Lighthouse" }, { text: "Temple of Artemis" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Ancient history! From before even the OLDEST good boy!",
@@ -261,7 +261,7 @@ export const questions: Question[] = [
     id: 17,
     category: "Pop Culture",
     question: "What is the name of SpongeBob's pet snail?",
-    choices: ["Sheldon", "Patrick", "Gary", "Larry"],
+    choices: [{ text: "Sheldon" }, { text: "Patrick" }, { text: "Gary" }, { text: "Larry" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "WHO LIVES IN A PINEAPPLE UNDER THE SEA?! *spins*",
@@ -277,7 +277,7 @@ export const questions: Question[] = [
     id: 18,
     category: "Food",
     question: "What is the main ingredient in hummus?",
-    choices: ["Lentils", "Chickpeas", "Black beans", "Peanuts"],
+    choices: [{ text: "Lentils" }, { text: "Chickpeas" }, { text: "Black beans" }, { text: "Peanuts" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Hummus! My human dips everything in it! Even things that should NOT be dipped!",
@@ -293,7 +293,7 @@ export const questions: Question[] = [
     id: 19,
     category: "Animals",
     question: "What is the fastest land animal?",
-    choices: ["Lion", "Cheetah", "Pronghorn", "Greyhound"],
+    choices: [{ text: "Lion" }, { text: "Cheetah" }, { text: "Pronghorn" }, { text: "Greyhound" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "FAST! ZOOM! I'm fast too when I hear the treat bag! *nyoom*",
@@ -309,7 +309,7 @@ export const questions: Question[] = [
     id: 20,
     category: "Tech",
     question: "What programming language was created by Brendan Eich in just 10 days?",
-    choices: ["Python", "Java", "JavaScript", "Ruby"],
+    choices: [{ text: "Python" }, { text: "Java" }, { text: "JavaScript" }, { text: "Ruby" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "CODING! *types random keys with paws* I'm helping!",
@@ -326,7 +326,7 @@ export const questions: Question[] = [
     id: 21,
     category: "Music",
     question: "Which My Chemical Romance album features the concept of a 'Black Parade'?",
-    choices: ["Three Cheers for Sweet Revenge", "The Black Parade", "Danger Days", "I Brought You My Bullets, You Brought Me Your Love"],
+    choices: [{ text: "Three Cheers for Sweet Revenge" }, { text: "The Black Parade" }, { text: "Danger Days" }, { text: "I Brought You My Bullets, You Brought Me Your Love" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "When I was a young pup, my father took me into the city! *howls dramatically*",
@@ -342,7 +342,7 @@ export const questions: Question[] = [
     id: 22,
     category: "Music",
     question: "What Fall Out Boy song contains the lyric 'We're going down, down in an earlier round'?",
-    choices: ["Thnks fr th Mmrs", "Sugar, We're Goin Down", "Dance, Dance", "Grand Theft Autumn"],
+    choices: [{ text: "Thnks fr th Mmrs" }, { text: "Sugar, We're Goin Down" }, { text: "Dance, Dance" }, { text: "Grand Theft Autumn" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Sugar?! WHERE?! Did someone say sugar?! *zoomies*",
@@ -358,7 +358,7 @@ export const questions: Question[] = [
     id: 23,
     category: "Music",
     question: "Which band released the album 'Enema of the State' in 1999?",
-    choices: ["Green Day", "Sum 41", "Blink-182", "The Offspring"],
+    choices: [{ text: "Green Day" }, { text: "Sum 41" }, { text: "Blink-182" }, { text: "The Offspring" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "This one's a CLASSIC! From back when I was still chasing my own tail! Still do actually!",
@@ -374,7 +374,7 @@ export const questions: Question[] = [
     id: 24,
     category: "Music",
     question: "What was the name of Paramore's breakout single from the 'Twilight' soundtrack?",
-    choices: ["Misery Business", "Decode", "crushcrushcrush", "That's What You Get"],
+    choices: [{ text: "Misery Business" }, { text: "Decode" }, { text: "crushcrushcrush" }, { text: "That's What You Get" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Vampires AND rock music?! Two of my favorite things to bark at!",
@@ -390,7 +390,7 @@ export const questions: Question[] = [
     id: 25,
     category: "Music",
     question: "Which band is known for the song 'I'm Not Okay (I Promise)'?",
-    choices: ["Panic! At The Disco", "Fall Out Boy", "My Chemical Romance", "Taking Back Sunday"],
+    choices: [{ text: "Panic! At The Disco" }, { text: "Fall Out Boy" }, { text: "My Chemical Romance" }, { text: "Taking Back Sunday" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Are you okay?! I'm ALWAYS okay! Because every day is the BEST DAY!",
@@ -406,7 +406,7 @@ export const questions: Question[] = [
     id: 26,
     category: "Music",
     question: "What Dashboard Confessional song became a massive crossover hit in 2003?",
-    choices: ["Screaming Infidelities", "Vindicated", "Hands Down", "Stolen"],
+    choices: [{ text: "Screaming Infidelities" }, { text: "Vindicated" }, { text: "Hands Down" }, { text: "Stolen" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "This one's for all the FEELINGS! *whimpers sympathetically*",
@@ -422,7 +422,7 @@ export const questions: Question[] = [
     id: 27,
     category: "Music",
     question: "Which punk band released 'American Idiot' as both an album and a Broadway musical?",
-    choices: ["The Ramones", "Bad Religion", "Green Day", "NOFX"],
+    choices: [{ text: "The Ramones" }, { text: "Bad Religion" }, { text: "Green Day" }, { text: "NOFX" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "PUNK ROCK! *headbangs and falls off couch*",
@@ -438,7 +438,7 @@ export const questions: Question[] = [
     id: 28,
     category: "Music",
     question: "What AFI album featured the hit single 'Miss Murder'?",
-    choices: ["Sing the Sorrow", "Decemberunderground", "Crash Love", "The Art of Drowning"],
+    choices: [{ text: "Sing the Sorrow" }, { text: "Decemberunderground" }, { text: "Crash Love" }, { text: "The Art of Drowning" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Murder?! That sounds scary! I'll protect everyone! *hides behind couch*",
@@ -454,7 +454,7 @@ export const questions: Question[] = [
     id: 29,
     category: "Music",
     question: "Which band wrote 'MakeDamnSure' and 'Cute Without the E'?",
-    choices: ["Brand New", "Saosin", "Taking Back Sunday", "Thursday"],
+    choices: [{ text: "Brand New" }, { text: "Saosin" }, { text: "Taking Back Sunday" }, { text: "Thursday" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Taking back WHAT?! Sunday is for naps! Don't take my nap day!",
@@ -470,7 +470,7 @@ export const questions: Question[] = [
     id: 30,
     category: "Music",
     question: "What Panic! At The Disco song starts with 'Oh, well imagine...'?",
-    choices: ["Nine in the Afternoon", "I Write Sins Not Tragedies", "But It's Better If You Do", "Lying Is the Most Fun"],
+    choices: [{ text: "Nine in the Afternoon" }, { text: "I Write Sins Not Tragedies" }, { text: "But It's Better If You Do" }, { text: "Lying Is the Most Fun" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "I WRITE SPINS NOT ZOOMIES! Wait that's not right...",
@@ -486,7 +486,7 @@ export const questions: Question[] = [
     id: 31,
     category: "Music",
     question: "Which emo band released the album 'Your Favorite Weapon' in 2001?",
-    choices: ["Saves the Day", "Brand New", "The Get Up Kids", "Jimmy Eat World"],
+    choices: [{ text: "Saves the Day" }, { text: "Brand New" }, { text: "The Get Up Kids" }, { text: "Jimmy Eat World" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "My favorite weapon is my TAIL! It knocks over everything!",
@@ -502,7 +502,7 @@ export const questions: Question[] = [
     id: 32,
     category: "Music",
     question: "What Jimmy Eat World song from 2001 became an alternative rock anthem with the lyric 'it just takes some time'?",
-    choices: ["Sweetness", "The Middle", "A Praise Chorus", "Pain"],
+    choices: [{ text: "Sweetness" }, { text: "The Middle" }, { text: "A Praise Chorus" }, { text: "Pain" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Everything's gonna be alright! EVERYTHING! Because I'm here! *tail wag*",
@@ -518,7 +518,7 @@ export const questions: Question[] = [
     id: 33,
     category: "Music",
     question: "Which member of My Chemical Romance went on to create the comic series 'The Umbrella Academy'?",
-    choices: ["Frank Iero", "Mikey Way", "Ray Toro", "Gerard Way"],
+    choices: [{ text: "Frank Iero" }, { text: "Mikey Way" }, { text: "Ray Toro" }, { text: "Gerard Way" }],
     correctIndex: 3,
     commentary: {
       picklesIntro: "COMICS! SUPERHEROES! I wanna be a superhero! Super Good Boy!",
@@ -534,7 +534,7 @@ export const questions: Question[] = [
     id: 34,
     category: "Music",
     question: "What band performed a famous punk cover of Michael Jackson's 'Smooth Criminal'?",
-    choices: ["New Found Glory", "American Hi-Fi", "Alien Ant Farm", "Simple Plan"],
+    choices: [{ text: "New Found Glory" }, { text: "American Hi-Fi" }, { text: "Alien Ant Farm" }, { text: "Simple Plan" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Smooth Criminal! Hee hee! *moonwalks and falls*",
@@ -550,7 +550,7 @@ export const questions: Question[] = [
     id: 35,
     category: "Music",
     question: "Which band's debut album 'Tell All Your Friends' is considered a defining Long Island emo record?",
-    choices: ["Straylight Run", "Taking Back Sunday", "From Autumn to Ashes", "The Movielife"],
+    choices: [{ text: "Straylight Run" }, { text: "Taking Back Sunday" }, { text: "From Autumn to Ashes" }, { text: "The Movielife" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Tell all your friends! I want EVERYONE to be my friend! EVERYONE!",
@@ -567,7 +567,7 @@ export const questions: Question[] = [
     id: 36,
     category: "TV",
     question: "What MTV show featured people getting their homes redesigned while they were away?",
-    choices: ["Cribs", "Room Raiders", "While You Were Out", "Pimp My Ride"],
+    choices: [{ text: "Cribs" }, { text: "Room Raiders" }, { text: "While You Were Out" }, { text: "Pimp My Ride" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Someone redecorated?! NEW SMELLS?! This is the best OR worst thing ever!",
@@ -583,7 +583,7 @@ export const questions: Question[] = [
     id: 37,
     category: "TV",
     question: "What was the name of the MTV show where celebrities showed off their luxurious homes?",
-    choices: ["MTV Cribs", "The Real World", "Rich Girls", "My Super Sweet 16"],
+    choices: [{ text: "MTV Cribs" }, { text: "The Real World" }, { text: "Rich Girls" }, { text: "My Super Sweet 16" }],
     correctIndex: 0,
     commentary: {
       picklesIntro: "BIG HOUSES! Big yards! So many places to SNIFF!",
@@ -599,7 +599,7 @@ export const questions: Question[] = [
     id: 38,
     category: "TV",
     question: "Which MTV dating show had contestants search through each other's bedrooms to pick a date?",
-    choices: ["Next", "Date My Mom", "Room Raiders", "Dismissed"],
+    choices: [{ text: "Next" }, { text: "Date My Mom" }, { text: "Room Raiders" }, { text: "Dismissed" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Sniffing around bedrooms?! That's MY thing! I'm an EXPERT!",
@@ -615,7 +615,7 @@ export const questions: Question[] = [
     id: 39,
     category: "TV",
     question: "What MTV reality show followed the lives of Lauren Conrad and Kristin Cavallari in high school?",
-    choices: ["The Hills", "Laguna Beach", "The City", "8th & Ocean"],
+    choices: [{ text: "The Hills" }, { text: "Laguna Beach" }, { text: "The City" }, { text: "8th & Ocean" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "BEACH! Did someone say BEACH?! I love sand! And water! And sand!",
@@ -631,7 +631,7 @@ export const questions: Question[] = [
     id: 40,
     category: "TV",
     question: "What was the name of Ashton Kutcher's hidden camera prank show on MTV?",
-    choices: ["Jackass", "Punk'd", "Boiling Points", "Viva La Bam"],
+    choices: [{ text: "Jackass" }, { text: "Punk'd" }, { text: "Boiling Points" }, { text: "Viva La Bam" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "PRANKS! I love surprises! Unless it's the vacuum. That's not funny.",
@@ -647,7 +647,7 @@ export const questions: Question[] = [
     id: 41,
     category: "TV",
     question: "Which MTV show featured Xzibit upgrading people's cars with outrageous modifications?",
-    choices: ["Pimp My Ride", "Rides", "Trick My Truck", "Overhaulin'"],
+    choices: [{ text: "Pimp My Ride" }, { text: "Rides" }, { text: "Trick My Truck" }, { text: "Overhaulin'" }],
     correctIndex: 0,
     commentary: {
       picklesIntro: "PIMP MY RIDE! Put a treat dispenser in the back seat! And a tennis ball launcher!",
@@ -663,7 +663,7 @@ export const questions: Question[] = [
     id: 42,
     category: "TV",
     question: "What early 2000s MTV show followed the cast living together in a house, billed as 'the true story of seven strangers'?",
-    choices: ["Road Rules", "The Real World", "The Challenge", "True Life"],
+    choices: [{ text: "Road Rules" }, { text: "The Real World" }, { text: "The Challenge" }, { text: "True Life" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Strangers living together?! MORE PEOPLE TO PET ME!",
@@ -679,7 +679,7 @@ export const questions: Question[] = [
     id: 43,
     category: "TV",
     question: "What MTV show featured teens throwing over-the-top birthday celebrations?",
-    choices: ["Rich Girls", "The Hills", "My Super Sweet 16", "Run's House"],
+    choices: [{ text: "Rich Girls" }, { text: "The Hills" }, { text: "My Super Sweet 16" }, { text: "Run's House" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "BIRTHDAY PARTY! Cake! Presents! Hats! I LOVE hats! Actually I hate hats. BUT CAKE!",
@@ -695,7 +695,7 @@ export const questions: Question[] = [
     id: 44,
     category: "TV",
     question: "Which MTV dating show would contestants yell the show's title to reject their date and bring out the next one?",
-    choices: ["Dismissed", "Room Raiders", "Next", "Parental Control"],
+    choices: [{ text: "Dismissed" }, { text: "Room Raiders" }, { text: "Next" }, { text: "Parental Control" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "I would NEVER say next to anyone! I love EVERYONE! NEXT question though!",
@@ -711,7 +711,7 @@ export const questions: Question[] = [
     id: 45,
     category: "TV",
     question: "What was the name of the daily MTV show where fans voted on the top music videos, hosted by Carson Daly?",
-    choices: ["MTV Jams", "106 & Park", "Total Request Live (TRL)", "MTV Countdown"],
+    choices: [{ text: "MTV Jams" }, { text: "106 & Park" }, { text: "Total Request Live (TRL)" }, { text: "MTV Countdown" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Voting! Democracy! I'd vote for more treats! And walks! And treats!",
@@ -727,7 +727,7 @@ export const questions: Question[] = [
     id: 46,
     category: "TV",
     question: "Which MTV reality show followed Ozzy Osbourne and his family's home life?",
-    choices: ["Newlyweds", "The Osbournes", "Viva La Bam", "Til Death Do Us Part"],
+    choices: [{ text: "Newlyweds" }, { text: "The Osbournes" }, { text: "Viva La Bam" }, { text: "Til Death Do Us Part" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Family show! I love families! Especially ones that drop food on the floor!",
@@ -743,7 +743,7 @@ export const questions: Question[] = [
     id: 47,
     category: "TV",
     question: "What MTV show starred Johnny Knoxville and featured dangerous stunts and crude humor?",
-    choices: ["Viva La Bam", "Jackass", "Wildboyz", "Scarred"],
+    choices: [{ text: "Viva La Bam" }, { text: "Jackass" }, { text: "Wildboyz" }, { text: "Scarred" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "STUNTS! I do stunts too! Watch me jump off... actually that's too high. Nevermind.",
@@ -759,7 +759,7 @@ export const questions: Question[] = [
     id: 48,
     category: "TV",
     question: "Which MTV show followed Bam Margera and his friends tormenting his parents with pranks?",
-    choices: ["Wildboyz", "Punk'd", "Viva La Bam", "Jackass"],
+    choices: [{ text: "Wildboyz" }, { text: "Punk'd" }, { text: "Viva La Bam" }, { text: "Jackass" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Pranking your parents?! My favorite prank is bringing them a stick! Surprise!",
@@ -775,7 +775,7 @@ export const questions: Question[] = [
     id: 49,
     category: "TV",
     question: "What MTV show challenged people to keep their cool in frustrating situations to win cash?",
-    choices: ["Punk'd", "Silent Library", "Boiling Points", "Next"],
+    choices: [{ text: "Punk'd" }, { text: "Silent Library" }, { text: "Boiling Points" }, { text: "Next" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Keep cool?! I can't even keep cool when I see a squirrel! Or a leaf! Or AIR!",
@@ -791,7 +791,7 @@ export const questions: Question[] = [
     id: 50,
     category: "TV",
     question: "What MTV dating show let parents choose their child's date by eliminating contestants?",
-    choices: ["Date My Mom", "Next", "Parental Control", "Dismissed"],
+    choices: [{ text: "Date My Mom" }, { text: "Next" }, { text: "Parental Control" }, { text: "Dismissed" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Parents picking dates?! My parents picked ME from the shelter! Best date ever!",
@@ -808,7 +808,7 @@ export const questions: Question[] = [
     id: 51,
     category: "Space",
     question: "What is the largest planet in our solar system?",
-    choices: ["Saturn", "Neptune", "Jupiter", "Uranus"],
+    choices: [{ text: "Saturn" }, { text: "Neptune" }, { text: "Jupiter" }, { text: "Uranus" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "THE BIGGEST PLANET! I love big things! Big sticks! Big yards! BIG PLANETS!",
@@ -824,7 +824,7 @@ export const questions: Question[] = [
     id: 52,
     category: "Space",
     question: "How long does it take light from the Sun to reach Earth?",
-    choices: ["About 4 minutes", "About 8 minutes", "About 12 minutes", "About 20 minutes"],
+    choices: [{ text: "About 4 minutes" }, { text: "About 8 minutes" }, { text: "About 12 minutes" }, { text: "About 20 minutes" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "The Sun! I love the Sun! I lay in it! It's warm! SCIENCE!",
@@ -840,7 +840,7 @@ export const questions: Question[] = [
     id: 53,
     category: "Space",
     question: "Which planet in our solar system has the most moons?",
-    choices: ["Jupiter", "Saturn", "Uranus", "Neptune"],
+    choices: [{ text: "Jupiter" }, { text: "Saturn" }, { text: "Uranus" }, { text: "Neptune" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "SO MANY MOONS! I'd howl at ALL of them! Every single one!",
@@ -856,7 +856,7 @@ export const questions: Question[] = [
     id: 54,
     category: "Space",
     question: "What is the name of the rover that NASA landed on Mars in February 2021?",
-    choices: ["Curiosity", "Opportunity", "Perseverance", "Spirit"],
+    choices: [{ text: "Curiosity" }, { text: "Opportunity" }, { text: "Perseverance" }, { text: "Spirit" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "A ROBOT ON MARS! Does it play fetch?! Can it play fetch on Mars?!",
@@ -872,7 +872,7 @@ export const questions: Question[] = [
     id: 55,
     category: "Space",
     question: "What is the Great Red Spot on Jupiter?",
-    choices: ["A volcanic crater", "A giant storm", "An impact scar", "A magnetic anomaly"],
+    choices: [{ text: "A volcanic crater" }, { text: "A giant storm" }, { text: "An impact scar" }, { text: "A magnetic anomaly" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A big red spot! Like the one on the carpet that I definitely didn't make!",
@@ -888,7 +888,7 @@ export const questions: Question[] = [
     id: 56,
     category: "Space",
     question: "What was the first human-made object to leave the solar system?",
-    choices: ["Pioneer 10", "Voyager 1", "Voyager 2", "New Horizons"],
+    choices: [{ text: "Pioneer 10" }, { text: "Voyager 1" }, { text: "Voyager 2" }, { text: "New Horizons" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "It LEFT the solar system?! That's the longest walk EVER! I want to go!",
@@ -904,7 +904,7 @@ export const questions: Question[] = [
     id: 57,
     category: "Space",
     question: "Which astronaut was the first to walk on the Moon?",
-    choices: ["Buzz Aldrin", "Neil Armstrong", "Michael Collins", "John Glenn"],
+    choices: [{ text: "Buzz Aldrin" }, { text: "Neil Armstrong" }, { text: "Michael Collins" }, { text: "John Glenn" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "THE MOON! I howl at that thing EVERY NIGHT! My greatest rival!",
@@ -920,7 +920,7 @@ export const questions: Question[] = [
     id: 58,
     category: "Space",
     question: "What is the closest star to Earth, other than the Sun?",
-    choices: ["Alpha Centauri", "Proxima Centauri", "Sirius", "Barnard's Star"],
+    choices: [{ text: "Alpha Centauri" }, { text: "Proxima Centauri" }, { text: "Sirius" }, { text: "Barnard's Star" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "STARS! I see them on walks! So many tiny lights! I want to chase them all!",
@@ -936,7 +936,7 @@ export const questions: Question[] = [
     id: 59,
     category: "Space",
     question: "What planet is known for its prominent ring system visible from Earth?",
-    choices: ["Jupiter", "Saturn", "Uranus", "Neptune"],
+    choices: [{ text: "Jupiter" }, { text: "Saturn" }, { text: "Uranus" }, { text: "Neptune" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "RINGS! Like the ones my human wears! Can I chew on Saturn's rings?!",
@@ -952,7 +952,7 @@ export const questions: Question[] = [
     id: 60,
     category: "Space",
     question: "What causes a solar eclipse?",
-    choices: ["Earth's shadow on the Moon", "The Moon passing between Earth and the Sun", "The Sun dimming temporarily", "Earth passing between the Sun and Moon"],
+    choices: [{ text: "Earth's shadow on the Moon" }, { text: "The Moon passing between Earth and the Sun" }, { text: "The Sun dimming temporarily" }, { text: "Earth passing between the Sun and Moon" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "The Sun disappeared once and I FREAKED OUT! Then it came back! BEST DAY!",
@@ -968,7 +968,7 @@ export const questions: Question[] = [
     id: 61,
     category: "Space",
     question: "Which space telescope, launched in 2021, is the successor to the Hubble Space Telescope?",
-    choices: ["Spitzer", "Kepler", "James Webb", "Chandra"],
+    choices: [{ text: "Spitzer" }, { text: "Kepler" }, { text: "James Webb" }, { text: "Chandra" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "A telescope in SPACE! Can it see my favorite park from up there?!",
@@ -984,7 +984,7 @@ export const questions: Question[] = [
     id: 62,
     category: "Space",
     question: "What is the term for a star that has collapsed into an extremely dense point with gravity so strong that light cannot escape?",
-    choices: ["White dwarf", "Neutron star", "Black hole", "Red giant"],
+    choices: [{ text: "White dwarf" }, { text: "Neutron star" }, { text: "Black hole" }, { text: "Red giant" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "A HOLE?! IN SPACE?! I love digging holes! This is the ULTIMATE hole!",
@@ -1000,7 +1000,7 @@ export const questions: Question[] = [
     id: 63,
     category: "Space",
     question: "What is the name of the galaxy that is expected to collide with the Milky Way in about 4.5 billion years?",
-    choices: ["Triangulum", "Andromeda", "Sombrero", "Whirlpool"],
+    choices: [{ text: "Triangulum" }, { text: "Andromeda" }, { text: "Sombrero" }, { text: "Whirlpool" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "GALAXIES CRASHING! That sounds LOUD! I bark at loud things!",
@@ -1016,7 +1016,7 @@ export const questions: Question[] = [
     id: 64,
     category: "Space",
     question: "What is the International Space Station's approximate altitude above Earth?",
-    choices: ["About 50 miles", "About 150 miles", "About 250 miles", "About 500 miles"],
+    choices: [{ text: "About 50 miles" }, { text: "About 150 miles" }, { text: "About 250 miles" }, { text: "About 500 miles" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "A house IN THE SKY! With people in it! I want to visit! Do they have dogs?!",
@@ -1032,7 +1032,7 @@ export const questions: Question[] = [
     id: 65,
     category: "Space",
     question: "Which planet rotates on its side, with an axial tilt of about 98 degrees?",
-    choices: ["Venus", "Uranus", "Neptune", "Pluto"],
+    choices: [{ text: "Venus" }, { text: "Uranus" }, { text: "Neptune" }, { text: "Pluto" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A planet that rolls around?! Like me when I want belly rubs?! SPACE BELLY RUBS!",
@@ -1048,7 +1048,7 @@ export const questions: Question[] = [
     id: 66,
     category: "Space",
     question: "What phenomenon occurs when a massive star explodes at the end of its life?",
-    choices: ["Solar flare", "Supernova", "Nebula", "Pulsar"],
+    choices: [{ text: "Solar flare" }, { text: "Supernova" }, { text: "Nebula" }, { text: "Pulsar" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "BOOM! EXPLOSION! IN SPACE! That's the biggest firework EVER!",
@@ -1064,7 +1064,7 @@ export const questions: Question[] = [
     id: 67,
     category: "Space",
     question: "Which dwarf planet was reclassified from planet status in 2006?",
-    choices: ["Ceres", "Eris", "Pluto", "Haumea"],
+    choices: [{ text: "Ceres" }, { text: "Eris" }, { text: "Pluto" }, { text: "Haumea" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "They DEMOTED a planet?! That's not very nice! Pluto is still a good boy!",
@@ -1080,7 +1080,7 @@ export const questions: Question[] = [
     id: 68,
     category: "Space",
     question: "What was the name of the first space station, launched by the Soviet Union in 1971?",
-    choices: ["Mir", "Salyut 1", "Skylab", "Tiangong"],
+    choices: [{ text: "Mir" }, { text: "Salyut 1" }, { text: "Skylab" }, { text: "Tiangong" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "The FIRST house in space! Before the ISS! History is EXCITING!",
@@ -1096,7 +1096,7 @@ export const questions: Question[] = [
     id: 69,
     category: "Space",
     question: "Approximately how old is the universe?",
-    choices: ["6.8 billion years", "9.2 billion years", "13.8 billion years", "18.4 billion years"],
+    choices: [{ text: "6.8 billion years" }, { text: "9.2 billion years" }, { text: "13.8 billion years" }, { text: "18.4 billion years" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "That's SO OLD! Even older than the oldest fire hydrant! WHOA!",
@@ -1112,7 +1112,7 @@ export const questions: Question[] = [
     id: 70,
     category: "Space",
     question: "Which planet has the tallest known volcano in the solar system, Olympus Mons?",
-    choices: ["Venus", "Mars", "Jupiter", "Mercury"],
+    choices: [{ text: "Venus" }, { text: "Mars" }, { text: "Jupiter" }, { text: "Mercury" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A VOLCANO ON ANOTHER PLANET! Space is so COOL! And also very hot apparently!",
@@ -1129,7 +1129,7 @@ export const questions: Question[] = [
     id: 71,
     category: "Geography",
     question: "What is the smallest country in the world by area?",
-    choices: ["Monaco", "Vatican City", "San Marino", "Liechtenstein"],
+    choices: [{ text: "Monaco" }, { text: "Vatican City" }, { text: "San Marino" }, { text: "Liechtenstein" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A TINY country! Like my bed! But with a pope! *spins*",
@@ -1145,7 +1145,7 @@ export const questions: Question[] = [
     id: 72,
     category: "Geography",
     question: "Through which two continents does the Ural Mountains form a boundary?",
-    choices: ["Asia and Africa", "Europe and Asia", "Europe and Africa", "Asia and North America"],
+    choices: [{ text: "Asia and Africa" }, { text: "Europe and Asia" }, { text: "Europe and Africa" }, { text: "Asia and North America" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "MOUNTAINS! I want to climb them! And sniff them! And pee on them!",
@@ -1161,7 +1161,7 @@ export const questions: Question[] = [
     id: 73,
     category: "Geography",
     question: "What is the longest river in Africa?",
-    choices: ["Congo", "Niger", "Zambezi", "Nile"],
+    choices: [{ text: "Congo" }, { text: "Niger" }, { text: "Zambezi" }, { text: "Nile" }],
     correctIndex: 3,
     commentary: {
       picklesIntro: "A really long river! I could swim in it for DAYS! *paddles in air*",
@@ -1177,7 +1177,7 @@ export const questions: Question[] = [
     id: 74,
     category: "Geography",
     question: "Which country has the longest coastline in the world?",
-    choices: ["Australia", "Indonesia", "Canada", "Russia"],
+    choices: [{ text: "Australia" }, { text: "Indonesia" }, { text: "Canada" }, { text: "Russia" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "COASTLINE! That means BEACHES! So many beaches to run on! FREEDOM!",
@@ -1193,7 +1193,7 @@ export const questions: Question[] = [
     id: 75,
     category: "Geography",
     question: "What is the driest continent on Earth?",
-    choices: ["Africa", "Australia", "Antarctica", "Asia"],
+    choices: [{ text: "Africa" }, { text: "Australia" }, { text: "Antarctica" }, { text: "Asia" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "DRY?! Like when my water bowl is empty?! SOMEONE FIX THIS!",
@@ -1209,7 +1209,7 @@ export const questions: Question[] = [
     id: 76,
     category: "Geography",
     question: "In which ocean is the Mariana Trench, the deepest point on Earth, located?",
-    choices: ["Atlantic", "Indian", "Pacific", "Arctic"],
+    choices: [{ text: "Atlantic" }, { text: "Indian" }, { text: "Pacific" }, { text: "Arctic" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "The DEEPEST HOLE! Even deeper than the one I dug in the backyard! Sorry about that!",
@@ -1225,7 +1225,7 @@ export const questions: Question[] = [
     id: 77,
     category: "Geography",
     question: "What is the only country that spans both the Eastern and Western hemispheres AND the Northern and Southern hemispheres?",
-    choices: ["Brazil", "Indonesia", "Kiribati", "France"],
+    choices: [{ text: "Brazil" }, { text: "Indonesia" }, { text: "Kiribati" }, { text: "France" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "ALL FOUR hemispheres?! That country is EVERYWHERE! Like me when treats are involved!",
@@ -1241,7 +1241,7 @@ export const questions: Question[] = [
     id: 78,
     category: "Geography",
     question: "What is the most densely populated country in the world?",
-    choices: ["Bangladesh", "Singapore", "Monaco", "India"],
+    choices: [{ text: "Bangladesh" }, { text: "Singapore" }, { text: "Monaco" }, { text: "India" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "So many people! So many potential friends! I want to meet ALL OF THEM!",
@@ -1257,7 +1257,7 @@ export const questions: Question[] = [
     id: 79,
     category: "Geography",
     question: "Which African country was formerly known as Abyssinia?",
-    choices: ["Somalia", "Ethiopia", "Eritrea", "Sudan"],
+    choices: [{ text: "Somalia" }, { text: "Ethiopia" }, { text: "Eritrea" }, { text: "Sudan" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Old names for countries! Like how I used to be called 'Puppy #4' at the shelter!",
@@ -1273,7 +1273,7 @@ export const questions: Question[] = [
     id: 80,
     category: "Geography",
     question: "What strait separates Europe from Africa?",
-    choices: ["Strait of Hormuz", "Strait of Gibraltar", "Strait of Malacca", "Bosporus Strait"],
+    choices: [{ text: "Strait of Hormuz" }, { text: "Strait of Gibraltar" }, { text: "Strait of Malacca" }, { text: "Bosporus Strait" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A strait! That's like a river between continents! Nature is AMAZING!",
@@ -1290,7 +1290,7 @@ export const questions: Question[] = [
     id: 81,
     category: "History",
     question: "What empire was ruled by Genghis Khan at its founding?",
-    choices: ["Ottoman Empire", "Mongol Empire", "Persian Empire", "Roman Empire"],
+    choices: [{ text: "Ottoman Empire" }, { text: "Mongol Empire" }, { text: "Persian Empire" }, { text: "Roman Empire" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A GREAT CONQUEROR! I conquered the dog park once! For like five minutes!",
@@ -1306,7 +1306,7 @@ export const questions: Question[] = [
     id: 82,
     category: "History",
     question: "In what year did the Berlin Wall fall?",
-    choices: ["1987", "1989", "1991", "1993"],
+    choices: [{ text: "1987" }, { text: "1989" }, { text: "1991" }, { text: "1993" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A wall came DOWN! That's great! I hate walls! They keep me from the neighbors!",
@@ -1322,7 +1322,7 @@ export const questions: Question[] = [
     id: 83,
     category: "History",
     question: "Which civilization built Machu Picchu?",
-    choices: ["Aztec", "Maya", "Inca", "Olmec"],
+    choices: [{ text: "Aztec" }, { text: "Maya" }, { text: "Inca" }, { text: "Olmec" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "A city on a MOUNTAIN! That's a long hike! I love hikes! LET'S GO!",
@@ -1338,7 +1338,7 @@ export const questions: Question[] = [
     id: 84,
     category: "History",
     question: "Who was the first woman to fly solo across the Atlantic Ocean?",
-    choices: ["Bessie Coleman", "Amelia Earhart", "Harriet Quimby", "Jacqueline Cochran"],
+    choices: [{ text: "Bessie Coleman" }, { text: "Amelia Earhart" }, { text: "Harriet Quimby" }, { text: "Jacqueline Cochran" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "FLYING! Across the OCEAN! Alone! That's so brave! I get scared in the car!",
@@ -1354,7 +1354,7 @@ export const questions: Question[] = [
     id: 85,
     category: "History",
     question: "What was the name of the ship that brought the Pilgrims to America in 1620?",
-    choices: ["Santa Maria", "Mayflower", "Endeavour", "Victoria"],
+    choices: [{ text: "Santa Maria" }, { text: "Mayflower" }, { text: "Endeavour" }, { text: "Victoria" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A boat trip! To a NEW PLACE! With new smells! I would have LOVED that boat!",
@@ -1370,7 +1370,7 @@ export const questions: Question[] = [
     id: 86,
     category: "History",
     question: "Which ancient civilization is credited with inventing the first writing system, cuneiform?",
-    choices: ["Egyptian", "Sumerian", "Chinese", "Greek"],
+    choices: [{ text: "Egyptian" }, { text: "Sumerian" }, { text: "Chinese" }, { text: "Greek" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "The first WRITING! Before that, did dogs just bark messages to each other?! We still do!",
@@ -1386,7 +1386,7 @@ export const questions: Question[] = [
     id: 87,
     category: "History",
     question: "What treaty ended World War I?",
-    choices: ["Treaty of Paris", "Treaty of Versailles", "Treaty of Ghent", "Treaty of Westphalia"],
+    choices: [{ text: "Treaty of Paris" }, { text: "Treaty of Versailles" }, { text: "Treaty of Ghent" }, { text: "Treaty of Westphalia" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "PEACE! I love peace! And pieces! Of treats! *panting*",
@@ -1402,7 +1402,7 @@ export const questions: Question[] = [
     id: 88,
     category: "History",
     question: "Who was the first Emperor of Rome?",
-    choices: ["Julius Caesar", "Augustus", "Nero", "Caligula"],
+    choices: [{ text: "Julius Caesar" }, { text: "Augustus" }, { text: "Nero" }, { text: "Caligula" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "An EMPEROR! With a big chair! And a crown! I want a crown! *sits regally for 2 seconds*",
@@ -1418,7 +1418,7 @@ export const questions: Question[] = [
     id: 89,
     category: "History",
     question: "The Rosetta Stone helped scholars decode which ancient writing system?",
-    choices: ["Cuneiform", "Egyptian hieroglyphics", "Linear B", "Sanskrit"],
+    choices: [{ text: "Cuneiform" }, { text: "Egyptian hieroglyphics" }, { text: "Linear B" }, { text: "Sanskrit" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A magic stone that helps you READ?! Like a cheat code! For HISTORY!",
@@ -1434,7 +1434,7 @@ export const questions: Question[] = [
     id: 90,
     category: "History",
     question: "What revolution began with the storming of the Bastille in 1789?",
-    choices: ["American Revolution", "French Revolution", "Russian Revolution", "Haitian Revolution"],
+    choices: [{ text: "American Revolution" }, { text: "French Revolution" }, { text: "Russian Revolution" }, { text: "Haitian Revolution" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "STORMING something! That sounds exciting! I storm the kitchen every dinnertime!",
@@ -1451,7 +1451,7 @@ export const questions: Question[] = [
     id: 91,
     category: "Movies",
     question: "What 1994 film features a character who says 'Life is like a box of chocolates'?",
-    choices: ["The Shawshank Redemption", "Forrest Gump", "Pulp Fiction", "The Lion King"],
+    choices: [{ text: "The Shawshank Redemption" }, { text: "Forrest Gump" }, { text: "Pulp Fiction" }, { text: "The Lion King" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "CHOCOLATES?! I can't eat those but they smell AMAZING! Run, Forrest, run!",
@@ -1467,7 +1467,7 @@ export const questions: Question[] = [
     id: 92,
     category: "Movies",
     question: "In 'The Wizard of Oz,' what does the Scarecrow want from the Wizard?",
-    choices: ["A heart", "Courage", "A brain", "A way home"],
+    choices: [{ text: "A heart" }, { text: "Courage" }, { text: "A brain" }, { text: "A way home" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Follow the yellow brick road! I love roads! And bricks! And following things!",
@@ -1483,7 +1483,7 @@ export const questions: Question[] = [
     id: 93,
     category: "Movies",
     question: "What is the name of the fictional hotel in 'The Shining'?",
-    choices: ["The Bates Motel", "The Overlook Hotel", "The Stanley Hotel", "The Grand Budapest Hotel"],
+    choices: [{ text: "The Bates Motel" }, { text: "The Overlook Hotel" }, { text: "The Stanley Hotel" }, { text: "The Grand Budapest Hotel" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A spooky hotel?! I don't like spooky! Unless there are treats! Are there treats?!",
@@ -1499,7 +1499,7 @@ export const questions: Question[] = [
     id: 94,
     category: "Movies",
     question: "Which film won the first-ever Academy Award for Best Picture in 1929?",
-    choices: ["Sunrise", "The Jazz Singer", "Wings", "Metropolis"],
+    choices: [{ text: "Sunrise" }, { text: "The Jazz Singer" }, { text: "Wings" }, { text: "Metropolis" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "The FIRST best picture! Movies were just babies back then! Baby movies!",
@@ -1515,7 +1515,7 @@ export const questions: Question[] = [
     id: 95,
     category: "Movies",
     question: "In 'The Matrix,' what color pill does Neo take to see the truth?",
-    choices: ["Blue", "Red", "Green", "White"],
+    choices: [{ text: "Blue" }, { text: "Red" }, { text: "Green" }, { text: "White" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "PILLS?! Like the ones my human hides in cheese?! I LOVE those!",
@@ -1531,7 +1531,7 @@ export const questions: Question[] = [
     id: 96,
     category: "Movies",
     question: "Who directed 'Jurassic Park'?",
-    choices: ["James Cameron", "Steven Spielberg", "George Lucas", "Ridley Scott"],
+    choices: [{ text: "James Cameron" }, { text: "Steven Spielberg" }, { text: "George Lucas" }, { text: "Ridley Scott" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "DINOSAURS! Big lizard dogs! I want to play with them! They're probably friendly!",
@@ -1547,7 +1547,7 @@ export const questions: Question[] = [
     id: 97,
     category: "Movies",
     question: "What is the name of Quentin Tarantino's first feature film?",
-    choices: ["Pulp Fiction", "Reservoir Dogs", "Kill Bill", "Jackie Brown"],
+    choices: [{ text: "Pulp Fiction" }, { text: "Reservoir Dogs" }, { text: "Kill Bill" }, { text: "Jackie Brown" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "DOGS! It has DOGS in the name! This is already my favorite movie!",
@@ -1563,7 +1563,7 @@ export const questions: Question[] = [
     id: 98,
     category: "Movies",
     question: "In what movie does the character say 'I see dead people'?",
-    choices: ["The Ring", "The Sixth Sense", "The Others", "Ghost"],
+    choices: [{ text: "The Ring" }, { text: "The Sixth Sense" }, { text: "The Others" }, { text: "Ghost" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "GHOSTS?! *barks at nothing in the corner* I KNEW something was there!",
@@ -1579,7 +1579,7 @@ export const questions: Question[] = [
     id: 99,
     category: "Movies",
     question: "Which Studio Ghibli film features a girl working in a bathhouse for spirits?",
-    choices: ["My Neighbor Totoro", "Spirited Away", "Princess Mononoke", "Howl's Moving Castle"],
+    choices: [{ text: "My Neighbor Totoro" }, { text: "Spirited Away" }, { text: "Princess Mononoke" }, { text: "Howl's Moving Castle" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A BATHHOUSE?! I don't like baths! But SPIRITS sound cool! Spooky cool!",
@@ -1595,7 +1595,7 @@ export const questions: Question[] = [
     id: 100,
     category: "Movies",
     question: "What 1975 film is widely credited with creating the concept of the summer blockbuster?",
-    choices: ["Star Wars", "Jaws", "The Godfather", "Rocky"],
+    choices: [{ text: "Star Wars" }, { text: "Jaws" }, { text: "The Godfather" }, { text: "Rocky" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "SHARK! Big fish! In the water! I'm never swimming again! *hides under blanket*",
@@ -1612,7 +1612,7 @@ export const questions: Question[] = [
     id: 101,
     category: "Animals",
     question: "What is the only mammal capable of true sustained flight?",
-    choices: ["Flying squirrel", "Sugar glider", "Bat", "Colugo"],
+    choices: [{ text: "Flying squirrel" }, { text: "Sugar glider" }, { text: "Bat" }, { text: "Colugo" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "FLYING MAMMALS! Like a dog with wings! The ULTIMATE good boy!",
@@ -1628,7 +1628,7 @@ export const questions: Question[] = [
     id: 102,
     category: "Animals",
     question: "How many hearts does an octopus have?",
-    choices: ["1", "2", "3", "4"],
+    choices: [{ text: "1" }, { text: "2" }, { text: "3" }, { text: "4" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "THREE HEARTS?! That's three times the love! I love love! *tail helicopter*",
@@ -1644,7 +1644,7 @@ export const questions: Question[] = [
     id: 103,
     category: "Animals",
     question: "What animal has the longest gestation period?",
-    choices: ["Blue whale", "African elephant", "Giraffe", "White rhinoceros"],
+    choices: [{ text: "Blue whale" }, { text: "African elephant" }, { text: "Giraffe" }, { text: "White rhinoceros" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Baby animals take SO LONG to arrive! I would be SO impatient! Like I am about everything!",
@@ -1660,7 +1660,7 @@ export const questions: Question[] = [
     id: 104,
     category: "Animals",
     question: "What is a group of crows called?",
-    choices: ["A flock", "A murder", "A conspiracy", "A parliament"],
+    choices: [{ text: "A flock" }, { text: "A murder" }, { text: "A conspiracy" }, { text: "A parliament" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "CROWS! They sit on the fence and JUDGE ME! Every morning!",
@@ -1676,7 +1676,7 @@ export const questions: Question[] = [
     id: 105,
     category: "Animals",
     question: "Which animal can sleep for up to three years?",
-    choices: ["Koala", "Sloth", "Snail", "Dormouse"],
+    choices: [{ text: "Koala" }, { text: "Sloth" }, { text: "Snail" }, { text: "Dormouse" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "THREE YEARS of sleep?! But when would you play?! Or eat?! Or PLAY?!",
@@ -1692,7 +1692,7 @@ export const questions: Question[] = [
     id: 106,
     category: "Animals",
     question: "What is the largest species of penguin?",
-    choices: ["King penguin", "Gentoo penguin", "Emperor penguin", "Macaroni penguin"],
+    choices: [{ text: "King penguin" }, { text: "Gentoo penguin" }, { text: "Emperor penguin" }, { text: "Macaroni penguin" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "PENGUINS! Tuxedo birds! They waddle! I waddle too when I'm excited!",
@@ -1708,7 +1708,7 @@ export const questions: Question[] = [
     id: 107,
     category: "Animals",
     question: "Which animal's fingerprints are virtually indistinguishable from human fingerprints?",
-    choices: ["Chimpanzee", "Gorilla", "Koala", "Orangutan"],
+    choices: [{ text: "Chimpanzee" }, { text: "Gorilla" }, { text: "Koala" }, { text: "Orangutan" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Fingerprints like HUMANS?! That's like a furry human! A VERY furry human!",
@@ -1724,7 +1724,7 @@ export const questions: Question[] = [
     id: 108,
     category: "Animals",
     question: "What is the fastest bird in the world during a dive?",
-    choices: ["Golden eagle", "Peregrine falcon", "Gyrfalcon", "White-throated needletail"],
+    choices: [{ text: "Golden eagle" }, { text: "Peregrine falcon" }, { text: "Gyrfalcon" }, { text: "White-throated needletail" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "FAST BIRD! Swooshing through the sky! I'd never catch it! But I'd TRY!",
@@ -1740,7 +1740,7 @@ export const questions: Question[] = [
     id: 109,
     category: "Animals",
     question: "Which sea creature has the largest brain of any invertebrate?",
-    choices: ["Octopus", "Giant squid", "Nautilus", "Cuttlefish"],
+    choices: [{ text: "Octopus" }, { text: "Giant squid" }, { text: "Nautilus" }, { text: "Cuttlefish" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "BIG BRAIN! Under the OCEAN! That's a smart fish! Wait, is it a fish?!",
@@ -1756,7 +1756,7 @@ export const questions: Question[] = [
     id: 110,
     category: "Animals",
     question: "What color is a polar bear's skin underneath its white fur?",
-    choices: ["White", "Pink", "Black", "Gray"],
+    choices: [{ text: "White" }, { text: "Pink" }, { text: "Black" }, { text: "Gray" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Polar bears! Big white dogs! With secrets UNDER their fur! SCANDALOUS!",
@@ -1772,7 +1772,7 @@ export const questions: Question[] = [
     id: 111,
     category: "Animals",
     question: "How many legs does a lobster have?",
-    choices: ["6", "8", "10", "12"],
+    choices: [{ text: "6" }, { text: "8" }, { text: "10" }, { text: "12" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "LOBSTER! With so many LEGS! I only have four and I trip over them constantly!",
@@ -1788,7 +1788,7 @@ export const questions: Question[] = [
     id: 112,
     category: "Animals",
     question: "What is the only bird that can fly backwards?",
-    choices: ["Kingfisher", "Hummingbird", "Swift", "Woodpecker"],
+    choices: [{ text: "Kingfisher" }, { text: "Hummingbird" }, { text: "Swift" }, { text: "Woodpecker" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "FLYING BACKWARDS?! That's like walking backwards but in the SKY! *walks into wall*",
@@ -1804,7 +1804,7 @@ export const questions: Question[] = [
     id: 113,
     category: "Animals",
     question: "Which animal produces the loudest sound of any living creature?",
-    choices: ["Blue whale", "Sperm whale", "Howler monkey", "Pistol shrimp"],
+    choices: [{ text: "Blue whale" }, { text: "Sperm whale" }, { text: "Howler monkey" }, { text: "Pistol shrimp" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "THE LOUDEST ANIMAL! Even louder than me when the doorbell rings?! IMPOSSIBLE!",
@@ -1820,7 +1820,7 @@ export const questions: Question[] = [
     id: 114,
     category: "Animals",
     question: "What do you call a baby kangaroo?",
-    choices: ["Cub", "Kit", "Joey", "Pup"],
+    choices: [{ text: "Cub" }, { text: "Kit" }, { text: "Joey" }, { text: "Pup" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "A baby kangaroo! In a POUCH! Like a built-in backpack! I want a pouch!",
@@ -1836,7 +1836,7 @@ export const questions: Question[] = [
     id: 115,
     category: "Animals",
     question: "Which reptile is known for being able to change color to communicate and regulate temperature?",
-    choices: ["Iguana", "Gecko", "Chameleon", "Anole"],
+    choices: [{ text: "Iguana" }, { text: "Gecko" }, { text: "Chameleon" }, { text: "Anole" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "COLOR-CHANGING?! Like magic! The most magical lizard! WIZARD LIZARD!",
@@ -1852,7 +1852,7 @@ export const questions: Question[] = [
     id: 116,
     category: "Animals",
     question: "What is the largest living reptile?",
-    choices: ["Komodo dragon", "Green anaconda", "Saltwater crocodile", "Leatherback sea turtle"],
+    choices: [{ text: "Komodo dragon" }, { text: "Green anaconda" }, { text: "Saltwater crocodile" }, { text: "Leatherback sea turtle" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "A BIG REPTILE! Like a dinosaur that's still alive! I'd try to play with it! Bad idea!",
@@ -1868,7 +1868,7 @@ export const questions: Question[] = [
     id: 117,
     category: "Animals",
     question: "What unique ability does the axolotl have that most vertebrates cannot do?",
-    choices: ["Breathe on land and water", "See in complete darkness", "Regenerate lost limbs", "Change biological sex"],
+    choices: [{ text: "Breathe on land and water" }, { text: "See in complete darkness" }, { text: "Regenerate lost limbs" }, { text: "Change biological sex" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "It grows its legs BACK?! If I lost a leg I'd just be sad! This animal is AMAZING!",
@@ -1884,7 +1884,7 @@ export const questions: Question[] = [
     id: 118,
     category: "Animals",
     question: "Which insect is responsible for pollinating approximately 75% of the world's flowering plants?",
-    choices: ["Butterfly", "Bee", "Beetle", "Moth"],
+    choices: [{ text: "Butterfly" }, { text: "Bee" }, { text: "Beetle" }, { text: "Moth" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "BEES! They buzz! And make honey! I got stung once! It was NOT fun!",
@@ -1900,7 +1900,7 @@ export const questions: Question[] = [
     id: 119,
     category: "Animals",
     question: "What is the largest species of shark alive today?",
-    choices: ["Great white shark", "Hammerhead shark", "Whale shark", "Tiger shark"],
+    choices: [{ text: "Great white shark" }, { text: "Hammerhead shark" }, { text: "Whale shark" }, { text: "Tiger shark" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "SHARKS! Big ocean puppies with lots of teeth! I respect the teeth game!",
@@ -1916,7 +1916,7 @@ export const questions: Question[] = [
     id: 120,
     category: "Animals",
     question: "What is the only continent where giraffes live in the wild?",
-    choices: ["Asia", "South America", "Australia", "Africa"],
+    choices: [{ text: "Asia" }, { text: "South America" }, { text: "Australia" }, { text: "Africa" }],
     correctIndex: 3,
     commentary: {
       picklesIntro: "GIRAFFES! Long neck dogs! The TALLEST dogs! Wait, they're not dogs? WHAT?!",
@@ -1933,7 +1933,7 @@ export const questions: Question[] = [
     id: 121,
     category: "Animals",
     question: "What animal has the highest blood pressure of any living creature?",
-    choices: ["Elephant", "Giraffe", "Blue whale", "Horse"],
+    choices: [{ text: "Elephant" }, { text: "Giraffe" }, { text: "Blue whale" }, { text: "Horse" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "HIGH BLOOD PRESSURE! Like me when I see the mailman! MY NEMESIS!",
@@ -1949,7 +1949,7 @@ export const questions: Question[] = [
     id: 122,
     category: "Animals",
     question: "Which animal sleeps with one eye open and half its brain awake?",
-    choices: ["Dolphin", "Shark", "Owl", "Crocodile"],
+    choices: [{ text: "Dolphin" }, { text: "Shark" }, { text: "Owl" }, { text: "Crocodile" }],
     correctIndex: 0,
     commentary: {
       picklesIntro: "Sleeping with one eye open?! That's TERRIFYING! I sleep with ALL eyes closed! And my tongue out!",
@@ -1965,7 +1965,7 @@ export const questions: Question[] = [
     id: 123,
     category: "Animals",
     question: "What is the world's most venomous snake by toxicity of venom?",
-    choices: ["King cobra", "Black mamba", "Inland taipan", "Eastern brown snake"],
+    choices: [{ text: "King cobra" }, { text: "Black mamba" }, { text: "Inland taipan" }, { text: "Eastern brown snake" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "SNAKES! Nope! No thank you! I'm out! *hides behind human's legs*",
@@ -1981,7 +1981,7 @@ export const questions: Question[] = [
     id: 124,
     category: "Animals",
     question: "How many stomachs does a cow have?",
-    choices: ["1", "2", "3", "4"],
+    choices: [{ text: "1" }, { text: "2" }, { text: "3" }, { text: "4" }],
     correctIndex: 3,
     commentary: {
       picklesIntro: "FOUR stomachs?! That's four times the snacks! I'm jealous! SO jealous!",
@@ -1997,7 +1997,7 @@ export const questions: Question[] = [
     id: 125,
     category: "Animals",
     question: "Which bird is known for its elaborate courtship dance and building decorated bowers?",
-    choices: ["Peacock", "Bird of paradise", "Bowerbird", "Flamingo"],
+    choices: [{ text: "Peacock" }, { text: "Bird of paradise" }, { text: "Bowerbird" }, { text: "Flamingo" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "A bird that BUILDS things and DANCES?! Like a tiny construction worker at a party!",
@@ -2013,7 +2013,7 @@ export const questions: Question[] = [
     id: 126,
     category: "Animals",
     question: "What is the only animal born with horns?",
-    choices: ["Rhinoceros", "Giraffe", "Goat", "Deer"],
+    choices: [{ text: "Rhinoceros" }, { text: "Giraffe" }, { text: "Goat" }, { text: "Deer" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "BORN with horns! Day one! Ready to go! That baby came PREPARED!",
@@ -2029,7 +2029,7 @@ export const questions: Question[] = [
     id: 127,
     category: "Animals",
     question: "Which marine animal has been observed using tools, such as rocks, to crack open shellfish?",
-    choices: ["Dolphin", "Sea otter", "Walrus", "Seal"],
+    choices: [{ text: "Dolphin" }, { text: "Sea otter" }, { text: "Walrus" }, { text: "Seal" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Animals using TOOLS?! I use tools too! My tool is my tongue! For everything!",
@@ -2045,7 +2045,7 @@ export const questions: Question[] = [
     id: 128,
     category: "Animals",
     question: "What land animal has the largest eyes relative to its body size?",
-    choices: ["Owl", "Tarsier", "Chameleon", "Tree frog"],
+    choices: [{ text: "Owl" }, { text: "Tarsier" }, { text: "Chameleon" }, { text: "Tree frog" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "BIG EYES! So big! Like when I give my human the puppy eyes for treats! PLEASE!",
@@ -2061,7 +2061,7 @@ export const questions: Question[] = [
     id: 129,
     category: "Animals",
     question: "What is the only domesticated animal that doesn't appear in any zodiac sign?",
-    choices: ["Cat", "Dog", "Hamster", "Goldfish"],
+    choices: [{ text: "Cat" }, { text: "Dog" }, { text: "Hamster" }, { text: "Goldfish" }],
     correctIndex: 0,
     commentary: {
       picklesIntro: "ZODIAC! Stars and animals! This is astrology for DOGS! I'm a Barkittarius!",
@@ -2077,7 +2077,7 @@ export const questions: Question[] = [
     id: 130,
     category: "Animals",
     question: "Which insect can lift 50 times its own body weight?",
-    choices: ["Ant", "Dung beetle", "Leafcutter ant", "Rhinoceros beetle"],
+    choices: [{ text: "Ant" }, { text: "Dung beetle" }, { text: "Leafcutter ant" }, { text: "Rhinoceros beetle" }],
     correctIndex: 3,
     commentary: {
       picklesIntro: "SO STRONG! A tiny bug! Lifting HUGE things! Like me pulling my leash toward the park!",
@@ -2094,7 +2094,7 @@ export const questions: Question[] = [
     id: 131,
     category: "Movies",
     question: "What is the name of the fictional African country in 'Coming to America'?",
-    choices: ["Wakanda", "Zamunda", "Genovia", "Wadiya"],
+    choices: [{ text: "Wakanda" }, { text: "Zamunda" }, { text: "Genovia" }, { text: "Wadiya" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A prince! Coming to America! To find LOVE! And maybe a DOG! Hopefully a dog!",
@@ -2110,7 +2110,7 @@ export const questions: Question[] = [
     id: 132,
     category: "Movies",
     question: "In 'The Silence of the Lambs,' what is Hannibal Lecter's profession?",
-    choices: ["Chef", "Psychiatrist", "Surgeon", "Professor"],
+    choices: [{ text: "Chef" }, { text: "Psychiatrist" }, { text: "Surgeon" }, { text: "Professor" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "This movie sounds scary! I'll just stay here and chew my bone! Safely!",
@@ -2126,7 +2126,7 @@ export const questions: Question[] = [
     id: 133,
     category: "Movies",
     question: "What year was the original 'Star Wars' film released?",
-    choices: ["1975", "1977", "1979", "1980"],
+    choices: [{ text: "1975" }, { text: "1977" }, { text: "1979" }, { text: "1980" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "STAR WARS! Pew pew! Lightsabers! I'd chew on a lightsaber! It's basically a glowing stick!",
@@ -2142,7 +2142,7 @@ export const questions: Question[] = [
     id: 134,
     category: "Movies",
     question: "Which actress played Furiosa in 'Mad Max: Fury Road'?",
-    choices: ["Scarlett Johansson", "Emily Blunt", "Charlize Theron", "Margot Robbie"],
+    choices: [{ text: "Scarlett Johansson" }, { text: "Emily Blunt" }, { text: "Charlize Theron" }, { text: "Margot Robbie" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "FURY ROAD! Fast cars! Explosions! SAND! I love sand! And explosions scare me! CONFLICTED!",
@@ -2158,7 +2158,7 @@ export const questions: Question[] = [
     id: 135,
     category: "Movies",
     question: "What is the highest-grossing R-rated film of all time?",
-    choices: ["Deadpool & Wolverine", "The Dark Knight", "It", "The Matrix Reloaded"],
+    choices: [{ text: "Deadpool & Wolverine" }, { text: "The Dark Knight" }, { text: "It" }, { text: "The Matrix Reloaded" }],
     correctIndex: 0,
     commentary: {
       picklesIntro: "R-rated! That means I'm not allowed to watch! But I'd watch anyway! Rebel pup!",
@@ -2174,7 +2174,7 @@ export const questions: Question[] = [
     id: 136,
     category: "Movies",
     question: "In 'The Truman Show,' what is the name of the fictional town Truman lives in?",
-    choices: ["Pleasantville", "Seahaven", "Sunnydale", "Celebration"],
+    choices: [{ text: "Pleasantville" }, { text: "Seahaven" }, { text: "Sunnydale" }, { text: "Celebration" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A whole FAKE town?! Is my dog park fake too?! IS ANYTHING REAL?! *existential zoomies*",
@@ -2190,7 +2190,7 @@ export const questions: Question[] = [
     id: 137,
     category: "Movies",
     question: "Who directed 'Get Out' and 'Us'?",
-    choices: ["Spike Lee", "Jordan Peele", "Barry Jenkins", "Ryan Coogler"],
+    choices: [{ text: "Spike Lee" }, { text: "Jordan Peele" }, { text: "Barry Jenkins" }, { text: "Ryan Coogler" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Scary movies! By the same person! They must LOVE being scared! I do NOT!",
@@ -2206,7 +2206,7 @@ export const questions: Question[] = [
     id: 138,
     category: "Movies",
     question: "What is the only horror film to win the Academy Award for Best Picture?",
-    choices: ["The Exorcist", "The Silence of the Lambs", "Get Out", "Psycho"],
+    choices: [{ text: "The Exorcist" }, { text: "The Silence of the Lambs" }, { text: "Get Out" }, { text: "Psycho" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A SCARY movie won the BIGGEST award?! That's like if the scariest dog won Best in Show! Wait...",
@@ -2222,7 +2222,7 @@ export const questions: Question[] = [
     id: 139,
     category: "Movies",
     question: "In 'Inception,' what object does Cobb use as his totem?",
-    choices: ["A dice", "A chess piece", "A spinning top", "A poker chip"],
+    choices: [{ text: "A dice" }, { text: "A chess piece" }, { text: "A spinning top" }, { text: "A poker chip" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "A spinning thing! I love spinning things! I chase my tail which is basically the same!",
@@ -2238,7 +2238,7 @@ export const questions: Question[] = [
     id: 140,
     category: "Movies",
     question: "What 2019 film became the first South Korean movie to win the Academy Award for Best Picture?",
-    choices: ["Oldboy", "Train to Busan", "Parasite", "Memories of Murder"],
+    choices: [{ text: "Oldboy" }, { text: "Train to Busan" }, { text: "Parasite" }, { text: "Memories of Murder" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "A movie from KOREA! Movies come from EVERYWHERE! The world is AMAZING!",
@@ -2255,7 +2255,7 @@ export const questions: Question[] = [
     id: 141,
     category: "History",
     question: "What ancient trade route connected China to the Mediterranean Sea?",
-    choices: ["Spice Route", "Silk Road", "Amber Road", "Incense Route"],
+    choices: [{ text: "Spice Route" }, { text: "Silk Road" }, { text: "Amber Road" }, { text: "Incense Route" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A ROAD! A really long ROAD! I love roads! Especially ones with fire hydrants!",
@@ -2271,7 +2271,7 @@ export const questions: Question[] = [
     id: 142,
     category: "History",
     question: "Who was the first person to circumnavigate the globe (completed by his crew after his death)?",
-    choices: ["Christopher Columbus", "Ferdinand Magellan", "Vasco da Gama", "Francis Drake"],
+    choices: [{ text: "Christopher Columbus" }, { text: "Ferdinand Magellan" }, { text: "Vasco da Gama" }, { text: "Francis Drake" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "Around the WHOLE WORLD! That's the longest walk ever! I wouldn't even need a leash!",
@@ -2287,7 +2287,7 @@ export const questions: Question[] = [
     id: 143,
     category: "History",
     question: "What was the last country to officially abolish slavery?",
-    choices: ["Brazil", "United States", "Mauritania", "Saudi Arabia"],
+    choices: [{ text: "Brazil" }, { text: "United States" }, { text: "Mauritania" }, { text: "Saudi Arabia" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "Abolishing bad things! That's GOOD! More abolishing! More treats for everyone!",
@@ -2303,7 +2303,7 @@ export const questions: Question[] = [
     id: 144,
     category: "History",
     question: "Which war was fought between the Houses of Lancaster and York?",
-    choices: ["Hundred Years' War", "English Civil War", "Wars of the Roses", "Thirty Years' War"],
+    choices: [{ text: "Hundred Years' War" }, { text: "English Civil War" }, { text: "Wars of the Roses" }, { text: "Thirty Years' War" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "ROSES! Like the ones I dug up from the garden! This war sounds DRAMATIC!",
@@ -2319,7 +2319,7 @@ export const questions: Question[] = [
     id: 145,
     category: "History",
     question: "What event is widely considered the start of the Renaissance?",
-    choices: ["The fall of Constantinople", "The invention of the printing press", "The Black Death ending", "The fall of Rome"],
+    choices: [{ text: "The fall of Constantinople" }, { text: "The invention of the printing press" }, { text: "The Black Death ending" }, { text: "The fall of Rome" }],
     correctIndex: 0,
     commentary: {
       picklesIntro: "The Renaissance! Art and science and BIG IDEAS! Like 'what if dogs ruled the world!'",
@@ -2335,7 +2335,7 @@ export const questions: Question[] = [
     id: 146,
     category: "History",
     question: "Which empire controlled most of Southeast Europe, Western Asia, and North Africa for over 600 years?",
-    choices: ["Roman Empire", "Byzantine Empire", "Ottoman Empire", "Persian Empire"],
+    choices: [{ text: "Roman Empire" }, { text: "Byzantine Empire" }, { text: "Ottoman Empire" }, { text: "Persian Empire" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "600 YEARS! That's like... a lot of dog years! My brain hurts!",
@@ -2351,7 +2351,7 @@ export const questions: Question[] = [
     id: 147,
     category: "History",
     question: "What was the Manhattan Project?",
-    choices: ["A New York City urban renewal plan", "The development of the atomic bomb", "NASA's first space mission", "A Cold War spy operation"],
+    choices: [{ text: "A New York City urban renewal plan" }, { text: "The development of the atomic bomb" }, { text: "NASA's first space mission" }, { text: "A Cold War spy operation" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "A secret project! With a city name! Sounds MYSTERIOUS! I love mysteries! Like where my ball went!",
@@ -2367,7 +2367,7 @@ export const questions: Question[] = [
     id: 148,
     category: "History",
     question: "Who was the longest-reigning British monarch before Queen Elizabeth II?",
-    choices: ["Queen Victoria", "King George III", "King Henry VIII", "King Edward VII"],
+    choices: [{ text: "Queen Victoria" }, { text: "King George III" }, { text: "King Henry VIII" }, { text: "King Edward VII" }],
     correctIndex: 0,
     commentary: {
       picklesIntro: "A QUEEN! With a CROWN! For a really LONG TIME! Like how long I wait for dinner! Feels like decades!",
@@ -2383,7 +2383,7 @@ export const questions: Question[] = [
     id: 149,
     category: "History",
     question: "What ancient city was buried by the eruption of Mount Vesuvius in 79 AD?",
-    choices: ["Athens", "Rome", "Pompeii", "Carthage"],
+    choices: [{ text: "Athens" }, { text: "Rome" }, { text: "Pompeii" }, { text: "Carthage" }],
     correctIndex: 2,
     commentary: {
       picklesIntro: "A VOLCANO buried a whole CITY?! That's terrifying! Everyone okay?! ...oh no.",
@@ -2399,7 +2399,7 @@ export const questions: Question[] = [
     id: 150,
     category: "History",
     question: "What 1947 event resulted in the creation of two independent nations, India and Pakistan?",
-    choices: ["The Quit India Movement", "The Partition of India", "The Salt March", "The Sepoy Mutiny"],
+    choices: [{ text: "The Quit India Movement" }, { text: "The Partition of India" }, { text: "The Salt March" }, { text: "The Sepoy Mutiny" }],
     correctIndex: 1,
     commentary: {
       picklesIntro: "TWO NEW COUNTRIES! From one! That's like when one dog park becomes two! More parks!",
