@@ -3,7 +3,7 @@ export const BETTING_DURATION_MS = 7500;
 export const REVEAL_TIME_MS = 5000;
 export const MAX_POINTS = 1000;
 export const QUESTIONS_PER_GAME = 10;
-export const MAX_PLAYERS = 2;
+export const MAX_PLAYERS = 3;
 
 export type GamePhase = "LOBBY" | "QUESTION" | "REVEAL" | "RESULTS";
 

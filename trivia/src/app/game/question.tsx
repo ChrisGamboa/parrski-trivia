@@ -118,7 +118,7 @@ export const Question = memo(function Question({
 
       {selectedChoice !== null && (
         <p className="text-center mt-4 animate-pulse-custom text-yellow">
-          Locked in! Waiting for opponent...
+          Locked in! Waiting for others...
         </p>
       )}
     </div>

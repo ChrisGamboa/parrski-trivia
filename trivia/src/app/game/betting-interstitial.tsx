@@ -15,8 +15,9 @@ export const BettingInterstitial = memo(function BettingInterstitial({
   players,
   questionNumber,
 }: BettingInterstitialProps) {
-  const oliverPlayerIndex = questionNumber % 2;
-  const lucaPlayerIndex = (questionNumber + 1) % 2;
+  const playerCount = players.length;
+  const oliverPlayerIndex = questionNumber % playerCount;
+  const lucaPlayerIndex = (questionNumber + 1) % playerCount;
 
   const oliverPlayer = players[oliverPlayerIndex] ?? players[0];
   const lucaPlayer = players[lucaPlayerIndex] ?? players[0];

@@ -47,14 +47,27 @@ export default function GameClient({ roomCode }: { roomCode: string }) {
     roomCode,
   );
 
-  // Track the opponent's answer
-  const opponent = game.players.find((p) => p.id !== myId);
-  const opponentId = opponent?.id ?? "none";
-  const [opponentAnswer] = useSyncedState<PlayerAnswer>(
+  // Track opponents' answers (up to 2 opponents for 3-player max)
+  const opponents = game.players.filter((p) => p.id !== myId);
+  const opponent0Id = opponents[0]?.id ?? "none";
+  const opponent1Id = opponents[1]?.id ?? "none";
+  const [opponent0Answer] = useSyncedState<PlayerAnswer>(
     NO_ANSWER,
-    `answer-${opponentId}`,
+    `answer-${opponent0Id}`,
     roomCode,
   );
+  const [opponent1Answer] = useSyncedState<PlayerAnswer>(
+    NO_ANSWER,
+    `answer-${opponent1Id}`,
+    roomCode,
+  );
+
+  function getAnswerForPlayer(playerId: string): PlayerAnswer {
+    if (playerId === myId) return myAnswer;
+    if (playerId === opponent0Id) return opponent0Answer;
+    if (playerId === opponent1Id) return opponent1Answer;
+    return NO_ANSWER;
+  }
 
   const [nameInput, setNameInput] = useState(getSavedPlayerName);
   const [joined, setJoined] = useState(false);
@@ -70,28 +83,21 @@ export default function GameClient({ roomCode }: { roomCode: string }) {
     }
   }, [game.players, myId]);
 
-  // Host: detect both answered → advance to reveal
+  // Host: detect all answered → advance to reveal
   useEffect(() => {
     if (!isHost || game.phase !== "QUESTION") return;
-    if (game.players.length < MAX_PLAYERS) return;
+    if (game.players.length < 2) return;
 
     const currentQIdx = game.currentQuestionIndex;
-    const bothAnswered = game.players.every((p) => {
-      if (p.id === myId) {
-        return (
-          myAnswer.questionIndex === currentQIdx && myAnswer.choiceIndex >= 0
-        );
-      }
-      return (
-        opponentAnswer.questionIndex === currentQIdx &&
-        opponentAnswer.choiceIndex >= 0
-      );
+    const allAnswered = game.players.every((p) => {
+      const answer = getAnswerForPlayer(p.id);
+      return answer.questionIndex === currentQIdx && answer.choiceIndex >= 0;
     });
 
-    if (bothAnswered) {
+    if (allAnswered) {
       advanceToReveal();
     }
-  }, [game.phase, game.currentQuestionIndex, myAnswer, opponentAnswer]);
+  }, [game.phase, game.currentQuestionIndex, myAnswer, opponent0Answer, opponent1Answer]);
 
   // Host: auto-advance from reveal after REVEAL_TIME_MS
   useEffect(() => {
@@ -172,12 +178,7 @@ export default function GameClient({ roomCode }: { roomCode: string }) {
 
     const playerResults: QuestionResult["players"] = {};
     for (const player of game.players) {
-      let answer: PlayerAnswer;
-      if (player.id === myId) {
-        answer = myAnswer;
-      } else {
-        answer = opponentAnswer;
-      }
+      const answer = getAnswerForPlayer(player.id);
 
       const chose =
         answer.questionIndex === qIdx ? answer.choiceIndex : -1;
@@ -229,7 +230,7 @@ export default function GameClient({ roomCode }: { roomCode: string }) {
   const handleTimeUp = useCallback(() => {
     if (!isHost) return;
     advanceToReveal();
-  }, [isHost, game, myAnswer, opponentAnswer]);
+  }, [isHost, game, myAnswer, opponent0Answer, opponent1Answer]);
 
   async function handlePlayAgain() {
     if (!isHost) return;

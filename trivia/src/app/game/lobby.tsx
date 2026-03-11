@@ -12,7 +12,7 @@ interface LobbyProps {
 }
 
 export function Lobby({ roomCode, players, isHost, onStart }: LobbyProps) {
-  const canStart = players.length === MAX_PLAYERS;
+  const canStart = players.length >= 2;
 
   return (
     <div className="animate-fade-in">
@@ -20,7 +20,7 @@ export function Lobby({ roomCode, players, isHost, onStart }: LobbyProps) {
         <h2 className="mb-2">Waiting Room</h2>
         <div className="room-code">{roomCode}</div>
         <p className="mt-2 text-electric-blue">
-          Share this code with your opponent!
+          Share this code with your friends!
         </p>
       </div>
 
@@ -29,9 +29,9 @@ export function Lobby({ roomCode, players, isHost, onStart }: LobbyProps) {
       <MascotSpeech
         mascot="pickles"
         text={
-          players.length < MAX_PLAYERS
-            ? "Waiting for another player to join... *stares at door*"
-            : "Both players are here! Let's GET THIS PARTY STARTED!"
+          players.length < 2
+            ? "Waiting for more players to join... *stares at door*"
+            : "Everyone's here! Let's GET THIS PARTY STARTED!"
         }
       />
 
@@ -55,7 +55,7 @@ export function Lobby({ roomCode, players, isHost, onStart }: LobbyProps) {
 
       {!canStart && (
         <p className="text-center mt-4 text-yellow waiting-dots">
-          Waiting for opponent
+          Waiting for players
         </p>
       )}
 
