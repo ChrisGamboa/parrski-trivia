@@ -466,9 +466,9 @@
   }
 
   .question-img {
-    @apply w-full max-w-md mx-auto rounded-lg my-4;
+    @apply block w-full max-w-md mx-auto rounded-lg my-4;
     max-height: 300px;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   .choice-img {
