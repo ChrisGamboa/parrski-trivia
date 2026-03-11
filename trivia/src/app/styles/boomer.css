@@ -465,6 +465,18 @@
     @apply text-lg sm:text-xl leading-relaxed my-4 text-white;
   }
 
+  .question-img {
+    @apply w-full max-w-md mx-auto rounded-lg my-4;
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .choice-img {
+    @apply w-full rounded mt-2;
+    max-height: 80px;
+    object-fit: cover;
+  }
+
   /* ===== MASCOTS ===== */
 
   .mascot {
