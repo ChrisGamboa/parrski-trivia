@@ -2655,7 +2655,7 @@ export const questions: Question[] = [
     id: 166,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/X9w40D9ojT.jpg",
+    image: "/images/breeds/X9w40D9ojT.jpg",
     choices: [{ text: "Labrador Retriever" }, { text: "Golden Retriever" }, { text: "Irish Setter" }, { text: "Nova Scotia Duck Tolling Retriever" }],
     correctIndex: 1,
     commentary: {
@@ -2672,7 +2672,7 @@ export const questions: Question[] = [
     id: 167,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/kc6oAx2b3X.jpg",
+    image: "/images/breeds/kc6oAx2b3X.jpg",
     choices: [{ text: "Belgian Malinois" }, { text: "Dutch Shepherd" }, { text: "German Shepherd" }, { text: "King Shepherd" }],
     correctIndex: 2,
     commentary: {
@@ -2689,7 +2689,7 @@ export const questions: Question[] = [
     id: 168,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/BE5AcsNMdm.jpg",
+    image: "/images/breeds/BE5AcsNMdm.jpg",
     choices: [{ text: "Golden Retriever" }, { text: "Weimaraner" }, { text: "Vizsla" }, { text: "Labrador Retriever" }],
     correctIndex: 3,
     commentary: {
@@ -2706,7 +2706,7 @@ export const questions: Question[] = [
     id: 169,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://storage.googleapis.com/dog-api-uploads-prod/originals/076906f8-69d2-41be-957b-9542e1e36bbc.jpeg",
+    image: "/images/breeds/076906f8-69d2-41be-957b-9542e1e36bbc.jpg",
     choices: [{ text: "Basset Hound" }, { text: "Beagle" }, { text: "Foxhound" }, { text: "Harrier" }],
     correctIndex: 1,
     commentary: {
@@ -2723,7 +2723,7 @@ export const questions: Question[] = [
     id: 170,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/uFPUHEvbID.jpg",
+    image: "/images/breeds/uFPUHEvbID.jpg",
     choices: [{ text: "Pit Bull" }, { text: "Mastiff" }, { text: "Boxer" }, { text: "Bullmastiff" }],
     correctIndex: 2,
     commentary: {
@@ -2740,7 +2740,7 @@ export const questions: Question[] = [
     id: 171,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/y8p3WCHoxH.jpg",
+    image: "/images/breeds/y8p3WCHoxH.jpg",
     choices: [{ text: "Alaskan Malamute" }, { text: "Samoyed" }, { text: "Siberian Husky" }, { text: "Akita" }],
     correctIndex: 2,
     commentary: {
@@ -2757,7 +2757,7 @@ export const questions: Question[] = [
     id: 172,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/ACDtQWVRBr.jpg",
+    image: "/images/breeds/ACDtQWVRBr.jpg",
     choices: [{ text: "Great Dane" }, { text: "Pointer" }, { text: "Dalmatian" }, { text: "English Setter" }],
     correctIndex: 2,
     commentary: {
@@ -2774,7 +2774,7 @@ export const questions: Question[] = [
     id: 173,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/sKx0rFHMRN.jpg",
+    image: "/images/breeds/sKx0rFHMRN.jpg",
     choices: [{ text: "French Bulldog" }, { text: "Boston Terrier" }, { text: "Pug" }, { text: "Bulldog" }],
     correctIndex: 2,
     commentary: {
@@ -2791,7 +2791,7 @@ export const questions: Question[] = [
     id: 174,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/LxI7Kkc5oH.jpg",
+    image: "/images/breeds/LxI7Kkc5oH.jpg",
     choices: [{ text: "Doberman Pinscher" }, { text: "Rottweiler" }, { text: "Cane Corso" }, { text: "German Shepherd" }],
     correctIndex: 1,
     commentary: {
@@ -2808,7 +2808,7 @@ export const questions: Question[] = [
     id: 175,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/yy1nVxX1TD.jpg",
+    image: "/images/breeds/yy1nVxX1TD.jpg",
     choices: [{ text: "Rottweiler" }, { text: "Weimaraner" }, { text: "Doberman Pinscher" }, { text: "Manchester Terrier" }],
     correctIndex: 2,
     commentary: {
@@ -2825,7 +2825,7 @@ export const questions: Question[] = [
     id: 176,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/MmjpsRG5IG.jpg",
+    image: "/images/breeds/MmjpsRG5IG.jpg",
     choices: [{ text: "Irish Wolfhound" }, { text: "Greyhound" }, { text: "Weimaraner" }, { text: "Great Dane" }],
     correctIndex: 3,
     commentary: {
@@ -2842,7 +2842,7 @@ export const questions: Question[] = [
     id: 177,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://storage.googleapis.com/dog-api-uploads-prod/originals/7ac26a12-d3bd-4939-a417-cf77f414fb0d.jpeg",
+    image: "/images/breeds/7ac26a12-d3bd-4939-a417-cf77f414fb0d.jpg",
     choices: [{ text: "Australian Shepherd" }, { text: "Border Collie" }, { text: "Shetland Sheepdog" }, { text: "Rough Collie" }],
     correctIndex: 1,
     commentary: {
@@ -2859,7 +2859,7 @@ export const questions: Question[] = [
     id: 178,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/FpTUahuFwc.jpg",
+    image: "/images/breeds/FpTUahuFwc.jpg",
     choices: [{ text: "Lhasa Apso" }, { text: "Maltese" }, { text: "Shih Tzu" }, { text: "Havanese" }],
     correctIndex: 2,
     commentary: {
@@ -2876,7 +2876,7 @@ export const questions: Question[] = [
     id: 179,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/R33EpeVC4M.jpg",
+    image: "/images/breeds/R33EpeVC4M.jpg",
     choices: [{ text: "Cardigan Welsh Corgi" }, { text: "Pembroke Welsh Corgi" }, { text: "Swedish Vallhund" }, { text: "Lancashire Heeler" }],
     correctIndex: 1,
     commentary: {
@@ -2893,7 +2893,7 @@ export const questions: Question[] = [
     id: 180,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/IcWEuLHtBn.jpg",
+    image: "/images/breeds/IcWEuLHtBn.jpg",
     choices: [{ text: "Bernese Mountain Dog" }, { text: "Newfoundland" }, { text: "Saint Bernard" }, { text: "Leonberger" }],
     correctIndex: 2,
     commentary: {
@@ -2910,7 +2910,7 @@ export const questions: Question[] = [
     id: 181,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/givys4YtVB.jpg",
+    image: "/images/breeds/givys4YtVB.jpg",
     choices: [{ text: "Greater Swiss Mountain Dog" }, { text: "Saint Bernard" }, { text: "Australian Shepherd" }, { text: "Bernese Mountain Dog" }],
     correctIndex: 3,
     commentary: {
@@ -2927,7 +2927,7 @@ export const questions: Question[] = [
     id: 182,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/Rvl1BeqaRB.jpg",
+    image: "/images/breeds/Rvl1BeqaRB.jpg",
     choices: [{ text: "Pug" }, { text: "Boston Terrier" }, { text: "Bulldog" }, { text: "French Bulldog" }],
     correctIndex: 3,
     commentary: {
@@ -2944,7 +2944,7 @@ export const questions: Question[] = [
     id: 183,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/zuTzCtrqg3.jpg",
+    image: "/images/breeds/zuTzCtrqg3.jpg",
     choices: [{ text: "Papillon" }, { text: "Pomeranian" }, { text: "Japanese Spitz" }, { text: "American Eskimo Dog" }],
     correctIndex: 1,
     commentary: {
@@ -2961,7 +2961,7 @@ export const questions: Question[] = [
     id: 184,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/oYrtCTqH9l.jpg",
+    image: "/images/breeds/oYrtCTqH9l.jpg",
     choices: [{ text: "Vizsla" }, { text: "Rhodesian Ridgeback" }, { text: "Weimaraner" }, { text: "Blue Lacy" }],
     correctIndex: 2,
     commentary: {
@@ -2978,7 +2978,7 @@ export const questions: Question[] = [
     id: 185,
     category: "Dog Breeds",
     question: "What breed of dog is this?",
-    image: "https://cdn4.thedogapi.com/optimized/EBxFXxL6xN.jpg",
+    image: "/images/breeds/EBxFXxL6xN.jpg",
     choices: [{ text: "Silky Terrier" }, { text: "Yorkshire Terrier" }, { text: "Cairn Terrier" }, { text: "Norwich Terrier" }],
     correctIndex: 1,
     commentary: {
