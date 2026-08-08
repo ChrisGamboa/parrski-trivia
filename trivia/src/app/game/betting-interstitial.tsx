@@ -1,35 +1,36 @@
 "use client";
 
 import { memo } from "react";
-import type { Player } from "@/app/data/types";
+
+import type { BettingCard } from "@/app/data/types";
 import { MascotSpeech } from "@/app/components/mascots";
 
 interface BettingInterstitialProps {
-  bettingLines: { oliver: string; luca: string };
-  players: Player[];
+  /** Already resolved to player names by the server, so every client agrees. */
+  betting: BettingCard;
+  category: string;
   questionNumber: number;
+  totalQuestions: number;
 }
 
 export const BettingInterstitial = memo(function BettingInterstitial({
-  bettingLines,
-  players,
+  betting,
+  category,
   questionNumber,
+  totalQuestions,
 }: BettingInterstitialProps) {
-  const playerCount = players.length;
-  const oliverPlayerIndex = questionNumber % playerCount;
-  const lucaPlayerIndex = (questionNumber + 1) % playerCount;
-
-  const oliverPlayer = players[oliverPlayerIndex] ?? players[0];
-  const lucaPlayer = players[lucaPlayerIndex] ?? players[0];
-
-  const oliverText = bettingLines.oliver.replace(/PLAYER/g, oliverPlayer.name);
-  const lucaText = bettingLines.luca.replace(/PLAYER/g, lucaPlayer.name);
-
   return (
     <div className="animate-fade-in">
+      <div className="flex justify-between items-center mb-2">
+        <span className="category-badge">{category}</span>
+        <span className="text-electric-blue">
+          Question {questionNumber} / {totalQuestions}
+        </span>
+      </div>
+
       <h3 className="text-center mb-4">The mascots are placing their bets...</h3>
-      <MascotSpeech mascot="oliver" text={oliverText} />
-      <MascotSpeech mascot="luca" text={lucaText} />
+      <MascotSpeech mascot="oliver" text={betting.oliver} />
+      <MascotSpeech mascot="luca" text={betting.luca} />
     </div>
   );
 });

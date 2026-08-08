@@ -5,6 +5,9 @@ import { lazy, Suspense } from "react";
 const GameClient = lazy(() => import("@/app/game/game-client"));
 
 export function Room({ params }: { params: { code: string } }) {
+  // The API only accepts A-Z, so a hand-typed lowercase link still works.
+  const roomCode = (params.code ?? "").toUpperCase();
+
   return (
     <Suspense
       fallback={
@@ -13,7 +16,7 @@ export function Room({ params }: { params: { code: string } }) {
         </div>
       }
     >
-      <GameClient roomCode={params.code} />
+      <GameClient roomCode={roomCode} />
     </Suspense>
   );
 }

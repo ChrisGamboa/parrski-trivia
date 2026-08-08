@@ -1,18 +1,27 @@
 "use client";
 
-import { Player, MAX_PLAYERS } from "@/app/data/types";
+import { MAX_PLAYERS, MIN_PLAYERS, type PublicPlayer } from "@/app/data/types";
 import { MascotSpeech } from "@/app/components/mascots";
 import { BoomerButton } from "@/app/components/boomer-button";
 
 interface LobbyProps {
   roomCode: string;
-  players: Player[];
+  players: PublicPlayer[];
+  hostId: string;
   isHost: boolean;
+  busy: boolean;
   onStart: () => void;
 }
 
-export function Lobby({ roomCode, players, isHost, onStart }: LobbyProps) {
-  const canStart = players.length >= 2;
+export function Lobby({
+  roomCode,
+  players,
+  hostId,
+  isHost,
+  busy,
+  onStart,
+}: LobbyProps) {
+  const canStart = players.length >= MIN_PLAYERS;
 
   return (
     <div className="animate-fade-in">
@@ -29,9 +38,9 @@ export function Lobby({ roomCode, players, isHost, onStart }: LobbyProps) {
       <MascotSpeech
         mascot="pickles"
         text={
-          players.length < 2
-            ? "Waiting for more players to join... *stares at door*"
-            : "Everyone's here! Let's GET THIS PARTY STARTED!"
+          canStart
+            ? "Everyone's here! Let's GET THIS PARTY STARTED!"
+            : "Waiting for more players to join... *stares at door*"
         }
       />
 
@@ -40,13 +49,13 @@ export function Lobby({ roomCode, players, isHost, onStart }: LobbyProps) {
           Players ({players.length}/{MAX_PLAYERS})
         </h3>
         <ul className="player-list">
-          {players.map((p, i) => (
+          {players.map((p) => (
             <li
               key={p.id}
-              className={`player-item ${i === 0 ? "player-item--host" : ""}`}
+              className={`player-item ${p.id === hostId ? "player-item--host" : ""}`}
             >
               <span>
-                {p.name} {i === 0 && "(Host)"}
+                {p.name} {p.id === hostId && "(Host)"}
               </span>
             </li>
           ))}
@@ -61,7 +70,7 @@ export function Lobby({ roomCode, players, isHost, onStart }: LobbyProps) {
 
       {isHost && canStart && (
         <div className="text-center mt-4">
-          <BoomerButton color="lime" onClick={onStart}>
+          <BoomerButton color="lime" onClick={onStart} disabled={busy}>
             Start Game!
           </BoomerButton>
         </div>

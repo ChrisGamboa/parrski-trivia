@@ -1,21 +1,23 @@
 "use client";
 
-import { memo, useState, useEffect } from "react";
-import type { Question as QuestionType, Choice, Player } from "@/app/data/types";
-import { BETTING_DURATION_MS } from "@/app/data/types";
+import { memo } from "react";
+
+import { QUESTION_TIME_MS } from "@/app/data/types";
+import type { Choice, PublicPlayer, PublicQuestion } from "@/app/data/types";
 import { Timer } from "@/app/components/timer";
 import { MascotSpeech } from "@/app/components/mascots";
-import { BettingInterstitial } from "./betting-interstitial";
 
 interface QuestionProps {
-  question: QuestionType;
+  question: PublicQuestion;
   questionNumber: number;
   totalQuestions: number;
-  questionStartTime: number;
-  selectedChoice: number | null;
+  deadline: number;
+  serverOffset: React.RefObject<number>;
+  myChoice: number | null;
+  iAnswered: boolean;
+  players: PublicPlayer[];
+  answeredIds: string[];
   onAnswer: (choiceIndex: number) => void;
-  onTimeUp: () => void;
-  players: Player[];
 }
 
 const ChoiceButton = memo(function ChoiceButton({
@@ -51,38 +53,15 @@ export const Question = memo(function Question({
   question,
   questionNumber,
   totalQuestions,
-  questionStartTime,
-  selectedChoice,
-  onAnswer,
-  onTimeUp,
+  deadline,
+  serverOffset,
+  myChoice,
+  iAnswered,
   players,
+  answeredIds,
+  onAnswer,
 }: QuestionProps) {
-  const [showBetting, setShowBetting] = useState(true);
-
-  useEffect(() => {
-    setShowBetting(true);
-    const timer = setTimeout(() => setShowBetting(false), BETTING_DURATION_MS);
-    return () => clearTimeout(timer);
-  }, [questionNumber]);
-
-  if (showBetting) {
-    return (
-      <div className="animate-fade-in">
-        <div className="flex justify-between items-center mb-2">
-          <span className="category-badge">{question.category}</span>
-          <span className="text-electric-blue">
-            Question {questionNumber} / {totalQuestions}
-          </span>
-        </div>
-
-        <BettingInterstitial
-          bettingLines={question.commentary.bettingLines}
-          players={players}
-          questionNumber={questionNumber}
-        />
-      </div>
-    );
-  }
+  const waitingOn = players.filter((p) => !answeredIds.includes(p.id));
 
   return (
     <div className="animate-fade-in">
@@ -93,9 +72,13 @@ export const Question = memo(function Question({
         </span>
       </div>
 
-      <Timer questionStartTime={questionStartTime} onTimeUp={onTimeUp} />
+      <Timer
+        deadline={deadline}
+        serverOffset={serverOffset}
+        totalMs={QUESTION_TIME_MS}
+      />
 
-      <MascotSpeech mascot="pickles" text={question.commentary.picklesIntro} />
+      <MascotSpeech mascot="pickles" text={question.picklesIntro} />
 
       <p className="question-text">{question.question}</p>
 
@@ -109,16 +92,18 @@ export const Question = memo(function Question({
             key={i}
             choice={choice}
             index={i}
-            selected={selectedChoice === i}
-            disabled={selectedChoice !== null}
+            selected={myChoice === i}
+            disabled={iAnswered}
             onAnswer={onAnswer}
           />
         ))}
       </div>
 
-      {selectedChoice !== null && (
+      {iAnswered && (
         <p className="text-center mt-4 animate-pulse-custom text-yellow">
-          Locked in! Waiting for others...
+          {waitingOn.length === 0
+            ? "Locked in!"
+            : `Locked in! Waiting for ${waitingOn.map((p) => p.name).join(", ")}...`}
         </p>
       )}
     </div>

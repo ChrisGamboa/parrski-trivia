@@ -1,18 +1,16 @@
 "use client";
 
 import { memo, useEffect } from "react";
-import type {
-  Question as QuestionType,
-  QuestionResult,
-  Player,
-} from "@/app/data/types";
+
+import type { PublicPlayer, PublicQuestion, RoundResult } from "@/app/data/types";
 import { MascotSpeech } from "@/app/components/mascots";
 import { MascotOverlay } from "@/app/components/mascot-overlay";
 
 interface RevealProps {
-  question: QuestionType;
-  result: QuestionResult;
-  players: Player[];
+  question: PublicQuestion;
+  /** Only sent once the round is over — this is where the answer arrives. */
+  result: RoundResult;
+  players: PublicPlayer[];
   myId: string;
 }
 
@@ -22,16 +20,16 @@ export const Reveal = memo(function Reveal({
   players,
   myId,
 }: RevealProps) {
-  const correctIndex = result.correctIndex;
+  const { correctIndex } = result;
   const myResult = result.players[myId];
-  const isCorrect = myResult && myResult.choiceIndex === correctIndex;
+  const isCorrect = !!myResult && myResult.choiceIndex === correctIndex;
 
   useEffect(() => {
     if (!isCorrect) {
       const audio = new Audio("/sounds/sad-trombone.mp3");
       audio.play().catch(() => {});
     }
-  }, []);
+  }, [isCorrect]);
 
   return (
     <div className="animate-fade-in">
@@ -56,11 +54,9 @@ export const Reveal = memo(function Reveal({
             const someonePickedThis = Object.values(result.players).some(
               (p) => p.choiceIndex === i,
             );
-            if (someonePickedThis) {
-              className += " choice-btn--wrong-selected";
-            } else {
-              className += " choice-btn--wrong";
-            }
+            className += someonePickedThis
+              ? " choice-btn--wrong-selected"
+              : " choice-btn--wrong";
           }
           return (
             <button key={i} className={className} disabled>
@@ -82,11 +78,14 @@ export const Reveal = memo(function Reveal({
           {players.map((player) => {
             const pr = result.players[player.id];
             const points = pr?.points ?? 0;
-            const isMe = player.id === myId;
+            const picked = pr?.choiceIndex ?? -1;
             return (
               <li key={player.id} className="player-item">
                 <span>
-                  {player.name} {isMe && "(You)"}
+                  {player.name} {player.id === myId && "(You)"}
+                  {picked < 0 && (
+                    <span className="text-sm text-yellow"> — no answer</span>
+                  )}
                 </span>
                 <span className={points > 0 ? "points-earned" : ""}>
                   {points > 0 ? `+${points}` : "0"}
@@ -97,17 +96,10 @@ export const Reveal = memo(function Reveal({
         </ul>
       </div>
 
-      {isCorrect ? (
-        <MascotSpeech
-          mascot="luca"
-          text={question.commentary.lucaCorrect}
-        />
-      ) : (
-        <MascotSpeech
-          mascot="oliver"
-          text={question.commentary.oliverWrong}
-        />
-      )}
+      <MascotSpeech
+        mascot={isCorrect ? "luca" : "oliver"}
+        text={isCorrect ? result.lucaCorrect : result.oliverWrong}
+      />
     </div>
   );
 });

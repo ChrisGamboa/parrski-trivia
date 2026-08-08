@@ -1,116 +1,49 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
-import { useSyncedState } from "rwsdk/use-synced-state/client";
-import type {
-  GameState,
-  PlayerAnswer,
-  Question,
-  QuestionResult,
-} from "@/app/data/types";
-import {
-  INITIAL_GAME_STATE,
-  BETTING_DURATION_MS,
-  MAX_PLAYERS,
-  QUESTIONS_PER_GAME,
-  REVEAL_TIME_MS,
-} from "@/app/data/types";
-import {
-  getPlayerId,
-  getSavedPlayerName,
-  savePlayerName,
-  calculatePoints,
-} from "@/app/shared/utils";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+import { MAX_PLAYERS } from "@/app/data/types";
+import { getPlayerId, getSavedPlayerName, savePlayerName } from "@/app/shared/utils";
+import { useRoom } from "./use-room";
 import { Lobby } from "./lobby";
 import { Question as QuestionView } from "./question";
+import { BettingInterstitial } from "./betting-interstitial";
 import { Reveal } from "./reveal";
 import { Results } from "./results";
 
-const NO_ANSWER: PlayerAnswer = {
-  questionIndex: -1,
-  choiceIndex: -1,
-  answeredAt: 0,
-};
-
 export default function GameClient({ roomCode }: { roomCode: string }) {
   const myId = useRef(getPlayerId()).current;
-
-  const [game, setGame] = useSyncedState<GameState>(
-    INITIAL_GAME_STATE,
-    "game",
+  const { game, serverOffset, join, start, answer, leaveBeacon } = useRoom(
     roomCode,
+    myId,
   );
-
-  const [myAnswer, setMyAnswer] = useSyncedState<PlayerAnswer>(
-    NO_ANSWER,
-    `answer-${myId}`,
-    roomCode,
-  );
-
-  // Track opponents' answers (up to 2 opponents for 3-player max)
-  const opponents = game.players.filter((p) => p.id !== myId);
-  const opponent0Id = opponents[0]?.id ?? "none";
-  const opponent1Id = opponents[1]?.id ?? "none";
-  const [opponent0Answer] = useSyncedState<PlayerAnswer>(
-    NO_ANSWER,
-    `answer-${opponent0Id}`,
-    roomCode,
-  );
-  const [opponent1Answer] = useSyncedState<PlayerAnswer>(
-    NO_ANSWER,
-    `answer-${opponent1Id}`,
-    roomCode,
-  );
-
-  function getAnswerForPlayer(playerId: string): PlayerAnswer {
-    if (playerId === myId) return myAnswer;
-    if (playerId === opponent0Id) return opponent0Answer;
-    if (playerId === opponent1Id) return opponent1Answer;
-    return NO_ANSWER;
-  }
 
   const [nameInput, setNameInput] = useState(getSavedPlayerName);
-  const [joined, setJoined] = useState(false);
   const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
 
-  const isHost = game.hostId === myId;
-  const revealTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // What we picked this round. The server only tells everyone *that* a player
+  // has answered, never what they chose, so our own choice is tracked here
+  // until the reveal.
+  const [myPick, setMyPick] = useState<{
+    questionNumber: number;
+    choiceIndex: number;
+  } | null>(null);
 
-  // Auto-rejoin: check if we're already in the player list
-  useEffect(() => {
-    if (game.players.some((p) => p.id === myId)) {
-      setJoined(true);
+  const joined = !!game?.players.some((p) => p.id === myId);
+  const isHost = game?.hostId === myId;
+
+  const run = useCallback(async (fn: () => Promise<unknown>) => {
+    setBusy(true);
+    setError("");
+    try {
+      await fn();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Something went wrong.");
+    } finally {
+      setBusy(false);
     }
-  }, [game.players, myId]);
-
-  // Host: detect all answered → advance to reveal
-  useEffect(() => {
-    if (!isHost || game.phase !== "QUESTION") return;
-    if (game.players.length < 2) return;
-
-    const currentQIdx = game.currentQuestionIndex;
-    const allAnswered = game.players.every((p) => {
-      const answer = getAnswerForPlayer(p.id);
-      return answer.questionIndex === currentQIdx && answer.choiceIndex >= 0;
-    });
-
-    if (allAnswered) {
-      advanceToReveal();
-    }
-  }, [game.phase, game.currentQuestionIndex, myAnswer, opponent0Answer, opponent1Answer]);
-
-  // Host: auto-advance from reveal after REVEAL_TIME_MS
-  useEffect(() => {
-    if (!isHost || game.phase !== "REVEAL") return;
-
-    revealTimerRef.current = setTimeout(() => {
-      advanceFromReveal();
-    }, REVEAL_TIME_MS);
-
-    return () => {
-      if (revealTimerRef.current) clearTimeout(revealTimerRef.current);
-    };
-  }, [isHost, game.phase, game.results.length]);
+  }, []);
 
   function handleJoin() {
     const name = nameInput.trim();
@@ -118,137 +51,52 @@ export default function GameClient({ roomCode }: { roomCode: string }) {
       setError("Enter your name!");
       return;
     }
-    if (game.players.length >= MAX_PLAYERS) {
-      setError("Room is full!");
-      return;
-    }
-    if (game.players.some((p) => p.id === myId)) {
-      setJoined(true);
-      return;
-    }
     savePlayerName(name);
-    const isFirstPlayer = game.players.length === 0;
-    setGame({
-      ...game,
-      players: [
-        ...game.players,
-        { id: myId, name, score: 0, joinedAt: Date.now() },
-      ],
-      hostId: isFirstPlayer ? myId : game.hostId,
-    });
-    setJoined(true);
-  }
-
-  async function fetchQuestions(): Promise<Question[]> {
-    const res = await fetch("/api/questions");
-    return res.json();
-  }
-
-  async function handleStart() {
-    if (!isHost) return;
-    const questions = await fetchQuestions();
-    setGame({
-      ...game,
-      phase: "QUESTION",
-      questions,
-      currentQuestionIndex: 0,
-      questionStartTime: Date.now() + BETTING_DURATION_MS,
-      results: [],
-      players: game.players.map((p) => ({ ...p, score: 0 })),
-    });
-    setMyAnswer(NO_ANSWER);
+    void run(() => join(name));
   }
 
   const handleAnswer = useCallback(
     (choiceIndex: number) => {
-      if (myAnswer.questionIndex === game.currentQuestionIndex) return;
-      setMyAnswer({
-        questionIndex: game.currentQuestionIndex,
-        choiceIndex,
-        answeredAt: Date.now(),
-      });
+      if (!game || game.phase !== "QUESTION") return;
+      if (game.answeredIds.includes(myId)) return;
+      setMyPick({ questionNumber: game.questionNumber, choiceIndex });
+      void run(() => answer(game.questionNumber, choiceIndex));
     },
-    [game.currentQuestionIndex, myAnswer.questionIndex],
+    [game, myId, answer, run],
   );
 
-  function advanceToReveal() {
-    if (!isHost) return;
-    const qIdx = game.currentQuestionIndex;
-    const question = game.questions[qIdx];
+  // Release the seat if the tab closes while we're still in the lobby, so a
+  // host who wanders off doesn't strand the room with a game nobody can start.
+  const inLobby = game?.phase === "LOBBY";
+  useEffect(() => {
+    if (!joined || !inLobby) return;
+    window.addEventListener("pagehide", leaveBeacon);
+    return () => window.removeEventListener("pagehide", leaveBeacon);
+  }, [joined, inLobby, leaveBeacon]);
 
-    const playerResults: QuestionResult["players"] = {};
-    for (const player of game.players) {
-      const answer = getAnswerForPlayer(player.id);
-
-      const chose =
-        answer.questionIndex === qIdx ? answer.choiceIndex : -1;
-      const isCorrect = chose === question.correctIndex;
-      const points = calculatePoints(
-        answer.answeredAt || game.questionStartTime + 20000,
-        game.questionStartTime,
-        isCorrect,
-      );
-
-      playerResults[player.id] = { choiceIndex: chose, points };
+  // Drop a stale pick once the round moves on.
+  useEffect(() => {
+    if (game && myPick && myPick.questionNumber !== game.questionNumber) {
+      setMyPick(null);
     }
+  }, [game?.questionNumber]);
 
-    const result: QuestionResult = {
-      questionIndex: qIdx,
-      correctIndex: question.correctIndex,
-      players: playerResults,
-    };
-
-    const updatedPlayers = game.players.map((p) => ({
-      ...p,
-      score: p.score + (playerResults[p.id]?.points ?? 0),
-    }));
-
-    setGame({
-      ...game,
-      phase: "REVEAL",
-      results: [...game.results, result],
-      players: updatedPlayers,
-    });
+  if (!game) {
+    return (
+      <div className="boomer-container text-center mt-8">
+        <h2 className="waiting-dots">Connecting</h2>
+      </div>
+    );
   }
 
-  function advanceFromReveal() {
-    if (!isHost) return;
-    const nextQIdx = game.currentQuestionIndex + 1;
-    if (nextQIdx >= QUESTIONS_PER_GAME) {
-      setGame({ ...game, phase: "RESULTS" });
-    } else {
-      setGame({
-        ...game,
-        phase: "QUESTION",
-        currentQuestionIndex: nextQIdx,
-        questionStartTime: Date.now() + BETTING_DURATION_MS,
-      });
-      setMyAnswer(NO_ANSWER);
-    }
-  }
+  /* --------------------------------------------------------------------- */
+  /* Join screen                                                            */
+  /* --------------------------------------------------------------------- */
 
-  const handleTimeUp = useCallback(() => {
-    if (!isHost) return;
-    advanceToReveal();
-  }, [isHost, game, myAnswer, opponent0Answer, opponent1Answer]);
-
-  async function handlePlayAgain() {
-    if (!isHost) return;
-    const questions = await fetchQuestions();
-    setGame({
-      ...game,
-      phase: "QUESTION",
-      questions,
-      currentQuestionIndex: 0,
-      questionStartTime: Date.now() + BETTING_DURATION_MS,
-      results: [],
-      players: game.players.map((p) => ({ ...p, score: 0 })),
-    });
-    setMyAnswer(NO_ANSWER);
-  }
-
-  // Join screen (not yet in the game)
   if (!joined) {
+    const full = game.players.length >= MAX_PLAYERS;
+    const running = game.phase !== "LOBBY";
+
     return (
       <div className="boomer-container">
         <div className="text-center mb-4">
@@ -258,14 +106,15 @@ export default function GameClient({ roomCode }: { roomCode: string }) {
 
         <div className="rainbow-divider" />
 
-        {game.players.length >= MAX_PLAYERS ? (
+        {full || running ? (
           <div className="boomer-card text-center">
-            <h2 className="text-red">Room Full!</h2>
-            <p className="mt-2">This room already has {MAX_PLAYERS} players.</p>
-            <a
-              href="/"
-              className="text-electric-blue inline-block mt-4"
-            >
+            <h2 className="text-red">{full ? "Room Full!" : "Game In Progress"}</h2>
+            <p className="mt-2">
+              {full
+                ? `This room already has ${MAX_PLAYERS} players.`
+                : "This round has already started. Hang tight or start your own room."}
+            </p>
+            <a href="/" className="text-electric-blue inline-block mt-4">
               Back to Home
             </a>
           </div>
@@ -288,30 +137,31 @@ export default function GameClient({ roomCode }: { roomCode: string }) {
               <button
                 className="boomer-btn boomer-btn--lime"
                 onClick={handleJoin}
+                disabled={busy}
               >
                 Join Game
               </button>
             </div>
-            {error && (
-              <p className="mt-2 text-red">
-                {error}
-              </p>
-            )}
+            {error && <p className="mt-2 text-red">{error}</p>}
           </div>
         )}
       </div>
     );
   }
 
-  // Main game rendering by phase
-  const currentQuestion = game.questions[game.currentQuestionIndex];
+  /* --------------------------------------------------------------------- */
+  /* In the game                                                            */
+  /* --------------------------------------------------------------------- */
+
+  const myChoice =
+    myPick?.questionNumber === game.questionNumber ? myPick.choiceIndex : null;
 
   return (
     <div className="boomer-container">
-      <div className="flex justify-between items-center mb-2">
+      <div className="flex justify-between items-center mb-2 flex-wrap gap-2">
         <h2 className="text-xl">PARRSKI TRIVIA</h2>
         {game.phase !== "LOBBY" && (
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-wrap">
             {game.players.map((p) => (
               <span
                 key={p.id}
@@ -330,32 +180,44 @@ export default function GameClient({ roomCode }: { roomCode: string }) {
         <Lobby
           roomCode={roomCode}
           players={game.players}
-          isHost={isHost}
-          onStart={handleStart}
+          hostId={game.hostId}
+          isHost={!!isHost}
+          busy={busy}
+          onStart={() => void run(start)}
         />
       )}
 
-      {game.phase === "QUESTION" && currentQuestion && (
+      {game.phase === "BETTING" && game.betting && (
+        <BettingInterstitial
+          betting={game.betting}
+          category={game.question?.category ?? ""}
+          questionNumber={game.questionNumber}
+          totalQuestions={game.totalQuestions}
+        />
+      )}
+
+      {game.phase === "QUESTION" && game.question && (
         <QuestionView
-          question={currentQuestion}
-          questionNumber={game.currentQuestionIndex + 1}
-          totalQuestions={QUESTIONS_PER_GAME}
-          questionStartTime={game.questionStartTime}
-          selectedChoice={
-            myAnswer.questionIndex === game.currentQuestionIndex
-              ? myAnswer.choiceIndex
-              : null
-          }
-          onAnswer={handleAnswer}
-          onTimeUp={handleTimeUp}
+          question={game.question}
+          questionNumber={game.questionNumber}
+          totalQuestions={game.totalQuestions}
+          deadline={game.deadline}
+          serverOffset={serverOffset}
+          myChoice={myChoice}
+          iAnswered={game.answeredIds.includes(myId)}
           players={game.players}
+          answeredIds={game.answeredIds}
+          onAnswer={handleAnswer}
         />
       )}
 
-      {game.phase === "REVEAL" && currentQuestion && (
+      {game.phase === "REVEAL" && game.question && game.result && (
         <Reveal
-          question={currentQuestion}
-          result={game.results[game.results.length - 1]}
+          // Remount per round, so the sting and the mascot overlay replay
+          // instead of staying spent after the first reveal.
+          key={game.questionNumber}
+          question={game.question}
+          result={game.result}
           players={game.players}
           myId={myId}
         />
@@ -364,10 +226,13 @@ export default function GameClient({ roomCode }: { roomCode: string }) {
       {game.phase === "RESULTS" && (
         <Results
           players={game.players}
-          isHost={isHost}
-          onPlayAgain={handlePlayAgain}
+          isHost={!!isHost}
+          busy={busy}
+          onPlayAgain={() => void run(start)}
         />
       )}
+
+      {error && <p className="mt-4 text-center text-red">{error}</p>}
     </div>
   );
 }
