@@ -18,6 +18,10 @@
       {
         "name": "SYNCED_STATE_SERVER",
         "class_name": "SyncedStateServer"
+      },
+      {
+        "name": "GAME_ROOM",
+        "class_name": "GameRoom"
       }
     ]
   },
@@ -25,6 +29,10 @@
     {
       "tag": "v1",
       "new_sqlite_classes": ["SyncedStateServer"]
+    },
+    {
+      "tag": "v2",
+      "new_sqlite_classes": ["GameRoom"]
     }
   ]
 }
