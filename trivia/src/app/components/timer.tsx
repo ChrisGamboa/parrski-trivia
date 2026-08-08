@@ -1,58 +1,55 @@
 "use client";
 
-import { memo, useEffect, useRef, useState } from "react";
-import { QUESTION_TIME_MS } from "@/app/data/types";
+import { memo, useEffect, useState, type RefObject } from "react";
 
 interface TimerProps {
-  questionStartTime: number;
-  onTimeUp: () => void;
+  /** Server epoch ms when this phase ends. */
+  deadline: number;
+  /** serverClock - localClock, so a skewed device clock doesn't shift the bar. */
+  serverOffset: RefObject<number>;
+  totalMs: number;
 }
 
+const TICK_MS = 100;
+
 export const Timer = memo(function Timer({
-  questionStartTime,
-  onTimeUp,
+  deadline,
+  serverOffset,
+  totalMs,
 }: TimerProps) {
-  const [seconds, setSeconds] = useState(Math.ceil(QUESTION_TIME_MS / 1000));
-  const firedRef = useRef(false);
+  const remainingNow = () =>
+    Math.max(0, deadline - (Date.now() + serverOffset.current));
+
+  const [remaining, setRemaining] = useState(remainingNow);
 
   useEffect(() => {
-    firedRef.current = false;
-    const totalSeconds = Math.ceil(QUESTION_TIME_MS / 1000);
-    setSeconds(totalSeconds);
+    setRemaining(remainingNow());
+    const id = setInterval(() => {
+      const left = remainingNow();
+      setRemaining(left);
+      if (left <= 0) clearInterval(id);
+    }, TICK_MS);
+    return () => clearInterval(id);
+  }, [deadline]);
 
-    // Single timeout for onTimeUp
-    const timeout = setTimeout(() => {
-      if (!firedRef.current) {
-        firedRef.current = true;
-        onTimeUp();
-      }
-    }, QUESTION_TIME_MS);
-
-    // 1s interval for countdown text
-    const interval = setInterval(() => {
-      const elapsed = Date.now() - questionStartTime;
-      const left = Math.max(0, QUESTION_TIME_MS - elapsed);
-      setSeconds(Math.ceil(left / 1000));
-    }, 1000);
-
-    return () => {
-      clearTimeout(timeout);
-      clearInterval(interval);
-    };
-  }, [questionStartTime, onTimeUp]);
+  const seconds = Math.ceil(remaining / 1000);
+  const fraction = totalMs > 0 ? Math.min(1, remaining / totalMs) : 0;
 
   let timerClass = "timer-text";
   if (seconds <= 3) timerClass += " animate-shake";
   else if (seconds <= 5) timerClass += " animate-pulse-custom";
+
+  let barColor = "timer-bar--green";
+  if (fraction <= 0.25) barColor = "timer-bar--pink";
+  else if (fraction <= 0.5) barColor = "timer-bar--yellow";
 
   return (
     <div>
       <div className={timerClass}>{seconds}s</div>
       <div className="timer-bar-container">
         <div
-          className="timer-bar timer-bar--animated"
-          key={questionStartTime}
-          style={{ animationDuration: `${QUESTION_TIME_MS}ms` }}
+          className={`timer-bar ${barColor}`}
+          style={{ width: `${fraction * 100}%` }}
         />
       </div>
     </div>
